@@ -1,0 +1,2 @@
+C:/Users/HungN/Projects/LanguageApp/android/app/.cxx/Debug/y5t2g111/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/HungN/Projects/LanguageApp/android/app/.cxx/Debug/y5t2g111/x86_64/CMakeFiles/rebuild_cache.dir
