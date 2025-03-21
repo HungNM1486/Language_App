@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:language_app/LoginSignup/login_screen.dart';
-import 'package:language_app/LoginSignup/signup_screen2.dart';
+import 'package:language_app/phunv/LoginSignup/login_screen.dart';
+import 'package:language_app/phunv/LoginSignup/signup_screen2.dart';
 import 'package:language_app/res/imagesLA/app_images.dart';
 
 class Signupscreen extends StatefulWidget {

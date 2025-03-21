@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:language_app/LoginSignup/signup_screen.dart';
+import 'package:language_app/phunv/LoginSignup/signup_screen.dart';
 import 'package:language_app/phunv/home_screen.dart';
 import 'package:language_app/res/imagesLA/app_images.dart';
 

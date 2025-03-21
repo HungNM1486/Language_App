@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:language_app/hungnm/profile/activity.dart';
+import 'package:language_app/hungnm/activity.dart';
 import 'package:language_app/widget/bottom_bar.dart';
+import 'package:language_app/hungnm/add_fr.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -10,36 +11,34 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  String _selectedTimeFilter = 'Ngày'; // Giá trị mặc định cho DropdownButton
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final pix = size.width / 375; // Responsive ratio
+    final pix =
+        (size.width / 375).clamp(0.8, 1.2); // Responsive ratio với giới hạn
 
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(
-              bottom: 80 *
-                  pix), // Thêm padding phía dưới để tránh bị che bởi Bottombar
+          padding: EdgeInsets.only(bottom: 80 * pix),
           child: Column(
             children: [
-              SizedBox(height: 40 * pix), // Khoảng cách phía trên
-              _buildUserInfo(size, pix), // Phần thông tin người dùng
-              _buildLanguageAndFriendsSection(
-                  size, pix), // Phần ngôn ngữ và bạn bè
-              _buildActivitySection(size, pix), // Phần hoạt động
-              _buildAchievementsSection(size, pix), // Phần thành tích
+              SizedBox(height: 40 * pix),
+              _buildUserInfo(size, pix),
+              _buildLanguageAndFriendsSection(size, pix),
+              _buildAddFriendAndShareSection(size, pix),
+              _buildActivitySection(size, pix),
+              _buildAchievementsSection(size, pix),
             ],
           ),
         ),
       ),
-      // Thêm thanh Bottombar vào đây
-      bottomNavigationBar:
-          const Bottombar(type: 5), // type = 5 để highlight nút Profile
+      bottomNavigationBar: const Bottombar(type: 5),
     );
   }
 
-  // Phần thông tin người dùng: ảnh đại diện, tên, ngày tham gia
   Widget _buildUserInfo(Size size, double pix) {
     return Container(
       width: size.width,
@@ -81,24 +80,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // Widget mới: Hàng với 2 cột (Cờ ngôn ngữ và Số lượng bạn bè)
   Widget _buildLanguageAndFriendsSection(Size size, double pix) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 25 * pix, vertical: 25 * pix),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          // Cột bên trái: Cờ ngôn ngữ và "Khóa học"
           Column(
             children: [
               Container(
                 width: 70 * pix,
                 height: 40 * pix,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10 * pix), // Bo góc
+                  borderRadius: BorderRadius.circular(10 * pix),
                   image: const DecorationImage(
-                    image: AssetImage(
-                        "lib/res/imagesLA/vietnam.jpg"), // Cờ ngôn ngữ
+                    image: AssetImage("lib/res/imagesLA/vietnam.jpg"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -114,17 +110,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ],
           ),
-          // Đường kẻ sọc mờ phân cách
           Container(
             width: 1 * pix,
             height: 80 * pix,
-            color: Colors.grey.withAlpha((0.3 * 255).toInt()), // Đường kẻ mờ
+            color: Colors.grey
+                .withAlpha((0.3 * 255).toInt()), 
           ),
-          // Cột bên phải: Số lượng bạn bè và "Bạn bè"
           Column(
             children: [
               Text(
-                '120', // Số lượng bạn bè (có thể thay bằng dữ liệu động)
+                '120',
                 style: TextStyle(
                   fontSize: 30 * pix,
                   fontFamily: 'BeVietnamPro',
@@ -148,7 +143,130 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // Phần hoạt động
+  Widget _buildAddFriendAndShareSection(Size size, double pix) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 25 * pix, vertical: 10 * pix),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 3,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AddFriendScreen()),
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.all(16 * pix),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10 * pix),
+                  border: Border.all(
+                    color: Colors.grey.withAlpha((0.3 * 255).toInt()),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.person_add, size: 20 * pix, color: Colors.blue),
+                    SizedBox(width: 10 * pix),
+                    Text(
+                      'Thêm bạn bè',
+                      style: TextStyle(
+                        fontSize: 16 * pix,
+                        fontFamily: 'BeVietnamPro',
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SizedBox(width: 10 * pix),
+          Expanded(
+            flex: 1,
+            child: GestureDetector(
+              onTap: () {
+                _showShareOptions(context);
+              },
+              child: Container(
+                padding: EdgeInsets.all(16 * pix),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10 * pix),
+                  border: Border.all(
+                    color: Colors.grey.withAlpha((0.3 * 255).toInt()),
+                  ),
+                ),
+                child: Icon(Icons.share, size: 20 * pix, color: Colors.blue),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showShareOptions(BuildContext context) {
+    final pix = MediaQuery.of(context).size.width / 375;
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: EdgeInsets.all(20 * pix),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Chia sẻ mã QR',
+                style: TextStyle(
+                  fontSize: 18 * pix,
+                  fontFamily: 'BeVietnamPro',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 20 * pix),
+              Container(
+                width: 150 * pix,
+                height: 150 * pix,
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(10 * pix),
+                ),
+                child: Center(
+                  child:
+                      Icon(Icons.qr_code, size: 100 * pix, color: Colors.blue),
+                ),
+              ),
+              SizedBox(height: 20 * pix),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                    icon:
+                        Icon(Icons.message, size: 30 * pix, color: Colors.blue),
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.email, size: 30 * pix, color: Colors.blue),
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.copy, size: 30 * pix, color: Colors.blue),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   Widget _buildActivitySection(Size size, double pix) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16 * pix),
@@ -168,7 +286,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               GestureDetector(
                 onTap: () {
-                  // Điều hướng đến ActivityScreen khi nhấn "Xem chi tiết"
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -233,7 +350,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 DropdownButton<String>(
-                  value: 'Ngày',
+                  value: _selectedTimeFilter,
                   icon: const Icon(Icons.arrow_drop_down),
                   iconSize: 24 * pix,
                   elevation: 16,
@@ -243,7 +360,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     color: Colors.black,
                   ),
                   underline: const SizedBox(),
-                  onChanged: (String? newValue) {},
+                  onChanged: (String? newValue) {
+                    if (newValue != null) {
+                      setState(() {
+                        _selectedTimeFilter = newValue;
+                      });
+                    }
+                  },
                   items: <String>['Ngày', 'Tuần', 'Tháng']
                       .map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
@@ -260,14 +383,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // Phần thành tích
   Widget _buildAchievementsSection(Size size, double pix) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16 * pix, vertical: 20 * pix),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Tiêu đề "Thành tích"
           Text(
             'Thành tích',
             style: TextStyle(
@@ -277,7 +398,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
           SizedBox(height: 20 * pix),
-          // Danh sách thành tích (2 cột)
           Column(
             children: [
               Row(
@@ -319,11 +439,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  // Widget cho mỗi huy hiệu (hình ảnh, tên, mô tả, trong khung riêng)
   Widget _buildBadgeItem(
       double pix, String title, String description, String imagePath) {
     return Container(
-      width: 150 * pix, // Chiều rộng khung
+      width: 150 * pix,
       padding: EdgeInsets.all(10 * pix),
       decoration: BoxDecoration(
         color: Colors.grey[200],

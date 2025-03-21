@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:language_app/LoginSignup/login_screen.dart';
+import 'package:language_app/phunv/LoginSignup/login_screen.dart';
 import 'package:language_app/phunv/home_screen.dart';
 import 'package:language_app/phunv/vocabulary_topic_screen.dart';
 import 'package:language_app/res/imagesLA/app_images.dart';
 import 'package:language_app/res/theme/app_colors.dart';
-import 'package:language_app/hungnm/profile/profile.dart';
+import 'package:language_app/hungnm/profile.dart';
 
 class Bottombar extends StatefulWidget {
   const Bottombar({super.key, required this.type});

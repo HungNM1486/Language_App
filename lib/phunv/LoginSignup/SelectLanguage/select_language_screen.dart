@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:language_app/LoginSignup/SelectLanguage/start_2screen.dart'; // Màn hình tiếp theo sau chọn ngôn ngữ
+import 'package:language_app/phunv/LoginSignup/SelectLanguage/start_2screen.dart'; // Màn hình tiếp theo sau chọn ngôn ngữ
 import 'package:language_app/res/imagesLA/app_images.dart'; // Danh sách ảnh (cờ)
 
 class SelectLanguescreen extends StatefulWidget {
