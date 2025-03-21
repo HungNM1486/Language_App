@@ -36,7 +36,8 @@ class _SelectLanguescreenState extends State<SelectLanguescreen> {
     final size = MediaQuery.of(context).size; // Kích thước màn hình
     final pix = size.width / 375; // Tỷ lệ pixel cho responsive
     return Scaffold(
-      body: SingleChildScrollView( // Cho phép cuộn
+      body: SingleChildScrollView(
+        // Cho phép cuộn
         child: Column(
           children: [
             // Header với nút back và tiêu đề
@@ -50,8 +51,10 @@ class _SelectLanguescreenState extends State<SelectLanguescreen> {
                     width: pix * 50,
                     margin: EdgeInsets.only(top: 16 * pix),
                     child: IconButton(
-                      onPressed: () => Navigator.pop(context), // Quay lại màn hình trước
-                      icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+                      onPressed: () =>
+                          Navigator.pop(context), // Quay lại màn hình trước
+                      icon:
+                          const Icon(Icons.arrow_back_ios, color: Colors.white),
                     ),
                   ),
                   Container(
@@ -60,7 +63,11 @@ class _SelectLanguescreenState extends State<SelectLanguescreen> {
                     padding: EdgeInsets.only(top: 30 * pix),
                     child: Text(
                       'Chọn ngôn ngữ',
-                      style: TextStyle(color: Colors.white, fontSize: 24 * pix, fontWeight: FontWeight.w500, fontFamily: 'BeVietnamPro'),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24 * pix,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'BeVietnamPro'),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -82,10 +89,14 @@ class _SelectLanguescreenState extends State<SelectLanguescreen> {
                       itemCount: _listLanguages.length,
                       itemBuilder: (context, index) {
                         return Padding(
-                          padding: EdgeInsets.only(bottom: 16 * pix, left: 24 * pix, right: 24 * pix),
+                          padding: EdgeInsets.only(
+                              bottom: 16 * pix,
+                              left: 24 * pix,
+                              right: 24 * pix),
                           child: InkWell(
                             onTap: () {
-                              setState(() => _selected = index); // Cập nhật ngôn ngữ được chọn
+                              setState(() => _selected =
+                                  index); // Cập nhật ngôn ngữ được chọn
                             },
                             child: Container(
                               width: 327 * pix,
@@ -93,22 +104,33 @@ class _SelectLanguescreenState extends State<SelectLanguescreen> {
                               padding: EdgeInsets.all(5 * pix),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
-                                color: _selected == index ? const Color(0xff40CEB6) : Colors.grey[300], // Màu xanh nếu được chọn, xám nếu không
+                                color: _selected == index
+                                    ? const Color(0xff40CEB6)
+                                    : Colors.grey[
+                                        300], // Màu xanh nếu được chọn, xám nếu không
                               ),
                               child: Row(
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     height: 52 * pix,
                                     width: 52 * pix,
-                                    child: Image.asset(_listLanguages[index]['img']!, height: 52 * pix, width: 52 * pix), // Cờ ngôn ngữ
+                                    child: Image.asset(
+                                        _listLanguages[index]['img']!,
+                                        height: 52 * pix,
+                                        width: 52 * pix),
                                   ),
                                   Container(
                                     height: 52 * pix,
                                     width: 250 * pix,
                                     padding: EdgeInsets.only(top: 10 * pix),
                                     child: Text(
-                                      _listLanguages[index]['title']!, // Tên ngôn ngữ
-                                      style: TextStyle(color: Colors.black, fontSize: 18 * pix, fontWeight: FontWeight.bold, fontFamily: 'BeVietnamPro'),
+                                      _listLanguages[index]
+                                          ['title']!, // Tên ngôn ngữ
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 18 * pix,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'BeVietnamPro'),
                                       textAlign: TextAlign.center,
                                     ),
                                   ),
@@ -127,19 +149,28 @@ class _SelectLanguescreenState extends State<SelectLanguescreen> {
                     right: 16 * pix,
                     child: InkWell(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const Start2screen())); // Chuyển sang màn hình tiếp theo
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const Start2screen())); // Chuyển sang màn hình tiếp theo
                       },
                       child: Container(
                         width: size.width,
                         height: 56 * pix,
-                        padding: EdgeInsets.only(left: 16 * pix, right: 16 * pix, top: 12 * pix),
+                        padding: EdgeInsets.only(
+                            left: 16 * pix, right: 16 * pix, top: 12 * pix),
                         decoration: BoxDecoration(
                           color: const Color(0xff5B7BFE), // Màu xanh nút
                           borderRadius: BorderRadius.circular(16 * pix),
                         ),
                         child: Text(
                           'Tiếp tục',
-                          style: TextStyle(fontSize: 20 * pix, fontFamily: 'BeVietnamPro', fontWeight: FontWeight.w500, color: Colors.white),
+                          style: TextStyle(
+                              fontSize: 20 * pix,
+                              fontFamily: 'BeVietnamPro',
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white),
                           textAlign: TextAlign.center,
                         ),
                       ),

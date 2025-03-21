@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:language_app/Task1/vocabulary_screen.dart';
-import 'package:language_app/Task1/widget/topic_widget.dart';
+import 'package:language_app/phunv/vocabulary_screen.dart';
+import 'package:language_app/phunv/widget/topic_widget.dart';
 import 'package:language_app/models/topic_model.dart';
 import 'package:language_app/res/imagesLA/app_images.dart';
 import 'package:language_app/widget/bottom_bar.dart';

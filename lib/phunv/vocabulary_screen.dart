@@ -2,6 +2,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:language_app/res/imagesLA/app_images.dart';
 import 'package:http/http.dart' as http;
+import 'dart:developer';
 
 class Vocabularyscreen extends StatefulWidget {
   const Vocabularyscreen({super.key, required this.title});
@@ -196,9 +197,9 @@ class FlashCard extends StatelessWidget {
   final String description;
   final String image;
   final bool isFlipped;
-  final AudioPlayer _audioPlayer = AudioPlayer(); // Khởi tạo AudioPlayer
+  // final AudioPlayer _audioPlayer = AudioPlayer(); // Khởi tạo AudioPlayer
 
-  FlashCard({
+  const FlashCard({
     super.key,
     required this.title,
     required this.description,
@@ -224,10 +225,10 @@ class FlashCard extends StatelessWidget {
       if (response.statusCode == 200) {
         await audioPlayer.play(BytesSource(response.bodyBytes));
       } else {
-        print("Failed to fetch audio: ${response.statusCode}");
+        log("Failed to fetch audio: ${response.statusCode}");
       }
     } catch (e) {
-      print("Error fetching audio: $e");
+      log("Error fetching audio: $e", level: 900); // Level cao hơn để báo lỗi
     }
   }
 
@@ -252,7 +253,7 @@ class FlashCard extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.5),
+            color: Colors.black.withValues(alpha: 0.5),
             offset: const Offset(0, 5),
             blurRadius: 10,
           ),
@@ -273,7 +274,8 @@ class FlashCard extends StatelessWidget {
               onTap: () {
                 _playAudio(title);
               },
-              child: const Icon(Icons.volume_up, color: Colors.white, size: 56)),
+              child:
+                  const Icon(Icons.volume_up, color: Colors.white, size: 56)),
           SizedBox(height: 16 * pix),
           Container(
             height: 80 * pix,
@@ -292,8 +294,8 @@ class FlashCard extends StatelessWidget {
                     onTap: () {
                       _playAudio(description);
                     },
-                    child:
-                        const Icon(Icons.volume_up, color: Colors.white, size: 36)),
+                    child: const Icon(Icons.volume_up,
+                        color: Colors.white, size: 36)),
               ],
             ),
           ),
@@ -307,7 +309,8 @@ class RotationYTransition extends StatelessWidget {
   final Animation<double> turns;
   final Widget child;
 
-  const RotationYTransition({super.key, required this.turns, required this.child});
+  const RotationYTransition(
+      {super.key, required this.turns, required this.child});
 
   @override
   Widget build(BuildContext context) {
