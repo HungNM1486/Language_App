@@ -14,7 +14,6 @@ class Vocabularyscreen extends StatefulWidget {
 
 class _VocabularyscreenState extends State<Vocabularyscreen> {
   final PageController _pageController = PageController();
-  int _currentIndex = 0;
   bool _isFlipped = false;
 
   final List<Map<String, String>> cards = [
@@ -104,8 +103,6 @@ class _VocabularyscreenState extends State<Vocabularyscreen> {
                     } else if (index < 0) {
                       _pageController.jumpToPage(
                           cards.length - 1); // Quay lại thẻ cuối cùng
-                    } else {
-                      _currentIndex = index;
                     }
                     _isFlipped = false; // Reset trạng thái lật thẻ
                   });

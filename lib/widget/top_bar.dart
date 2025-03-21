@@ -1,46 +1,57 @@
 import 'package:flutter/material.dart';
 
-class TopBar extends StatelessWidget {
+class TopBar extends StatefulWidget {
+  const TopBar({super.key, required this.title, this.isBack = true});
   final String title;
   final bool isBack;
 
-  const TopBar({super.key, required this.title, this.isBack = true});
+  @override
+  State<TopBar> createState() => _TopBarState();
+}
 
+class _TopBarState extends State<TopBar> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final pix = size.width / 375;
-
     return Container(
       height: 100 * pix,
       width: size.width,
-      color: const Color(0xff43AAFF),
-      padding: EdgeInsets.only(top: 20 * pix),
+      padding: EdgeInsets.only(top: 10 * pix),
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [Color(0xff43AAFF), Color(0xff5053FF)],
+        ),
+      ),
       child: Row(
         children: [
           Container(
             width: pix * 50,
             margin: EdgeInsets.only(top: 16 * pix),
-            child: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(
-                Icons.arrow_back_ios,
-                color: Colors.white,
-              ),
-            ),
+            child: widget.isBack
+                ? IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.white,
+                    ),
+                  )
+                : const SizedBox(),
           ),
           Container(
             width: size.width - 100 * pix,
             height: 80 * pix,
             padding: EdgeInsets.only(top: 30 * pix),
             child: Text(
-              title,
+              widget.title,
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 24 * pix,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w500,
                   fontFamily: 'BeVietnamPro'),
               textAlign: TextAlign.center,
             ),

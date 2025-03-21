@@ -1,143 +1,145 @@
 import 'package:flutter/material.dart';
-import 'package:language_app/LoginSignup/login_screen.dart'; // Import màn hình đăng nhập
-import 'package:language_app/phunv/home_screen.dart'; // Import màn hình chính
-import 'package:language_app/phunv/vocabulary_topic_screen.dart'; // Import màn hình chủ đề từ vựng
-import 'package:language_app/res/imagesLA/app_images.dart'; // Import danh sách ảnh (icon)
-import 'package:language_app/res/theme/app_colors.dart'; // Import màu sắc chủ đề
-import 'package:language_app/hungnm/profile/profile.dart'; // Import ProfileScreen
+import 'package:language_app/LoginSignup/login_screen.dart';
+import 'package:language_app/phunv/home_screen.dart';
+import 'package:language_app/phunv/vocabulary_topic_screen.dart';
+import 'package:language_app/res/imagesLA/app_images.dart';
+import 'package:language_app/res/theme/app_colors.dart';
+import 'package:language_app/hungnm/profile/profile.dart';
 
-// Widget Bottombar là Stateful để quản lý trạng thái của thanh điều hướng dưới
 class Bottombar extends StatefulWidget {
-  const Bottombar(
-      {super.key,
-      required this.type}); // Constructor với tham số type để xác định nút nào được chọn
-  final int type; // Biến type xác định nút đang active (1-5)
+  const Bottombar({super.key, required this.type});
+  final int type;
 
   @override
-  State<Bottombar> createState() =>
-      _BottombarState(); // Tạo state cho Bottombar
+  State<Bottombar> createState() => _BottombarState();
 }
 
 class _BottombarState extends State<Bottombar> {
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size; // Lấy kích thước màn hình
-    final pix = size.width /
-        375; // Tỷ lệ pixel dựa trên chiều rộng chuẩn 375px (để responsive)
+    final size = MediaQuery.of(context).size;
+    final pix = size.width / 375;
     return Container(
-      height: 64 * pix, // Chiều cao thanh bottom bar, tính theo tỷ lệ
-      width: 312 * pix, // Chiều rộng thanh, tính theo tỷ lệ
-      padding:
-          EdgeInsets.symmetric(horizontal: 8 * pix), // Khoảng cách lề trái/phải
+      height: 60 * pix, // Tăng chiều cao để chứa thêm nhãn
+      width: size.width,
       decoration: BoxDecoration(
-        color: const Color(0xffD1D1D6), // Màu nền xám nhạt cho thanh bottom
-        borderRadius: BorderRadius.circular(50), // Bo góc tròn 50px
-        border: Border.all(
-          color: const Color.fromARGB(255, 130, 130, 130), // Viền màu xám đậm
-          width: 1 * pix, // Độ dày viền theo tỷ lệ
-        ),
-        boxShadow: const [
+        color: Colors.white, // Màu nền trắng
+        boxShadow: [
           BoxShadow(
-            color: Color.fromARGB(255, 0, 0, 0), // Màu bóng đen
-            offset: Offset(0, 0), // Vị trí bóng (giữa)
-            blurRadius: 5, // Độ mờ bóng
+            color: Colors.black.withAlpha((0.1 * 255).toInt()),
+            blurRadius: 10,
+            offset: const Offset(0, -5),
           ),
         ],
       ),
       child: Row(
-        mainAxisAlignment:
-            MainAxisAlignment.spaceAround, // Các nút cách đều nhau
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          // Nút Home
-          _buildActionButton(
-              onTap: () {
-                // Khi nhấn, chuyển sang màn hình HomeScreen
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Homescreen()));
-              },
-              image: AppImages.iconhome, // Icon Home từ AppImages
-              enabled: widget.type == 1 ? true : false), // Active nếu type = 1
-
-          // Nút Vocabulary
-          _buildActionButton(
-              onTap: () {
-                // Khi nhấn, chuyển sang màn hình VocabularyTopicscreen
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const VocabularyTopicscreen()));
-              },
-              image: AppImages.iconvocabulary, // Icon Vocabulary
-              enabled: widget.type == 2 ? true : false), // Active nếu type = 2
-
-          // Nút Study (dẫn đến LoginScreen)
-          _buildActionButton(
-              onTap: () {
-                // Khi nhấn, chuyển sang màn hình LoginScreen
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Loginscreen()));
-              },
-              image: AppImages.iconstudy, // Icon Study
-              enabled: widget.type == 3 ? true : false), // Active nếu type = 3
-
-          // Nút Test (dẫn đến LoginScreen)
-          _buildActionButton(
-              onTap: () {
-                // Khi nhấn, chuyển sang màn hình LoginScreen
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Loginscreen()));
-              },
-              image: AppImages.icontest, // Icon Test
-              enabled: widget.type == 4 ? true : false), // Active nếu type = 4
-
-          // Nút Profile (dẫn đến LoginScreen)
           _buildActionButton(
             onTap: () {
-              // Khi nhấn, chuyển sang màn hình ProfileScreen
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const Homescreen()),
+              );
+            },
+            image: AppImages.iconhome,
+            label: 'Home', // Thêm nhãn
+            enabled: widget.type == 1,
+          ),
+          _buildActionButton(
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const VocabularyTopicscreen()),
+              );
+            },
+            image: AppImages.iconvocabulary,
+            label: 'Vocabulary', // Thêm nhãn
+            enabled: widget.type == 2,
+          ),
+          _buildActionButton(
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const Loginscreen()),
+              );
+            },
+            image: AppImages.iconstudy,
+            label: 'Study', // Thêm nhãn
+            enabled: widget.type == 3,
+          ),
+          _buildActionButton(
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const Loginscreen()),
+              );
+            },
+            image: AppImages.icontest,
+            label: 'Test', // Thêm nhãn
+            enabled: widget.type == 4,
+          ),
+          _buildActionButton(
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const ProfileScreen()),
               );
             },
-            image: AppImages.iconprofile, // Icon Profile
-            enabled: widget.type == 5 ? true : false,
-          ), // Active nếu type = 5
+            image: AppImages.iconprofile,
+            label: 'Profile', // Thêm nhãn
+            enabled: widget.type == 5,
+          ),
         ],
       ),
     );
   }
 
-  // Hàm tạo nút hành động (button) trong bottom bar
   Widget _buildActionButton({
-    required VoidCallback onTap, // Hàm xử lý khi nhấn
-    required String image, // Đường dẫn ảnh icon
-    required bool enabled, // Trạng thái active/inactive
+    required VoidCallback onTap,
+    required String image,
+    required String label,
+    required bool enabled,
   }) {
-    final size = MediaQuery.of(context).size; // Lấy kích thước màn hình
-    final pix = size.width / 375; // Tỷ lệ pixel
+    final size = MediaQuery.of(context).size;
+    final pix = size.width / 375;
     return GestureDetector(
-      onTap: onTap, // Gắn sự kiện nhấn
-      child: Container(
-        height: 56 * pix, // Chiều cao nút
-        width: 56 * pix, // Chiều rộng nút
-        decoration: BoxDecoration(
-          color: enabled
-              ? AppColors.primary
-              : Colors
-                  .transparent, // Màu primary nếu active, trong suốt nếu không
-          borderRadius: BorderRadius.circular(50), // Bo tròn nút
-        ),
-        child: Center(
-          child: Image.asset(image,
-              width: 32 * pix,
-              height: 32 * pix), // Hiển thị icon, kích thước theo tỷ lệ
-        ),
+      onTap: onTap,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            height: 40 * pix,
+            width: 40 * pix,
+            decoration: BoxDecoration(
+              color: enabled
+                  ? AppColors.primary.withAlpha((0.2 * 255).toInt())
+                  : Colors.transparent,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Center(
+              child: Image.asset(
+                image,
+                width: 24 * pix,
+                height: 24 * pix,
+                color: enabled
+                    ? AppColors.primary
+                    : Colors.grey, // Thay đổi màu icon khi active
+              ),
+            ),
+          ),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 12 * pix,
+              color: enabled
+                  ? AppColors.primary
+                  : Colors.grey, // Thay đổi màu nhãn khi active
+              fontWeight: enabled ? FontWeight.bold : FontWeight.normal,
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:language_app/phunv/home_screen.dart';
 import 'package:language_app/hungnm/profile/activity.dart';
+import 'package:language_app/widget/bottom_bar.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -10,30 +10,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  int _selectedIndex = 1; // Index mặc định là Profile (1)
-
-  // Danh sách các màn hình tương ứng
-  final List<Widget> _widgetOptions = <Widget>[
-    const Homescreen(), // Màn hình Home (index 0)
-    const ProfileScreen(), // Màn hình Profile (index 1)
-    const Center(
-        child: Text('Settings')), // Màn hình Settings (index 2, tạm thời)
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    // Điều hướng đến màn hình tương ứng (nếu cần)
-    if (index != 1) {
-      // Không điều hướng nếu đã ở Profile
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => _widgetOptions[index]),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -41,42 +17,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 40 * pix), // Khoảng cách phía trên
-            _buildUserInfo(size, pix), // Phần thông tin người dùng
-            _buildLanguageAndFriendsSection(size, pix), // Phần ngôn ngữ và bạn bè
-            _buildActivitySection(size, pix), // Phần hoạt động
-            _buildAchievementsSection(size, pix), // Phần thành tích
-          ],
+        child: Padding(
+          padding: EdgeInsets.only(
+              bottom: 80 *
+                  pix), // Thêm padding phía dưới để tránh bị che bởi Bottombar
+          child: Column(
+            children: [
+              SizedBox(height: 40 * pix), // Khoảng cách phía trên
+              _buildUserInfo(size, pix), // Phần thông tin người dùng
+              _buildLanguageAndFriendsSection(
+                  size, pix), // Phần ngôn ngữ và bạn bè
+              _buildActivitySection(size, pix), // Phần hoạt động
+              _buildAchievementsSection(size, pix), // Phần thành tích
+            ],
+          ),
         ),
       ),
-      bottomNavigationBar: SizedBox(
-        height: 50 * pix, // Định nghĩa chiều cao cố định
-        child: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'Settings',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: const Color(0xff5B7BFE),
-          onTap: _onItemTapped,
-          type: BottomNavigationBarType.fixed,
-          iconSize: 20 * pix, // Giảm kích thước icon
-          selectedFontSize: 12 * pix, // Giảm kích thước chữ khi chọn
-          unselectedFontSize: 12 * pix, // Giảm kích thước chữ khi không chọn
-        ),
-      ),
+      // Thêm thanh Bottombar vào đây
+      bottomNavigationBar:
+          const Bottombar(type: 5), // type = 5 để highlight nút Profile
     );
   }
 
@@ -138,7 +97,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10 * pix), // Bo góc
                   image: const DecorationImage(
-                    image: AssetImage("lib/res/imagesLA/vietnam.jpg"), // Cờ ngôn ngữ
+                    image: AssetImage(
+                        "lib/res/imagesLA/vietnam.jpg"), // Cờ ngôn ngữ
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -158,7 +118,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Container(
             width: 1 * pix,
             height: 80 * pix,
-            color: Colors.grey.withOpacity(0.3), // Đường kẻ mờ
+            color: Colors.grey.withAlpha((0.3 * 255).toInt()), // Đường kẻ mờ
           ),
           // Cột bên phải: Số lượng bạn bè và "Bạn bè"
           Column(

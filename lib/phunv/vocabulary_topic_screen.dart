@@ -4,6 +4,7 @@ import 'package:language_app/phunv/widget/topic_widget.dart';
 import 'package:language_app/models/topic_model.dart';
 import 'package:language_app/res/imagesLA/app_images.dart';
 import 'package:language_app/widget/bottom_bar.dart';
+import 'package:language_app/widget/top_bar.dart';
 
 class VocabularyTopicscreen extends StatefulWidget {
   const VocabularyTopicscreen({super.key});
@@ -74,42 +75,7 @@ class _VocabularyTopicscreenState extends State<VocabularyTopicscreen> {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  height: 100 * pix,
-                  width: size.width,
-                  color: const Color(0xff43AAFF),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: pix * 50,
-                        margin: EdgeInsets.only(top: 16 * pix),
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(
-                            Icons.arrow_back_ios,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: size.width - 100 * pix,
-                        height: 80 * pix,
-                        padding: EdgeInsets.only(top: 30 * pix),
-                        child: Text(
-                          'Chủ đề từ vựng',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24 * pix,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'BeVietnamPro'),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                const TopBar(title: "Chủ đề từ vựng", isBack: false),
                 Container(
                   height: 55 * pix,
                   width: size.width,
@@ -197,10 +163,9 @@ class _VocabularyTopicscreenState extends State<VocabularyTopicscreen> {
             ),
           ),
         ),
-        Positioned(
-          bottom: 50 * pix,
-          left: (size.width - 312 * pix) / 2,
-          child: const Bottombar(type: 2),
+        const Positioned(
+          bottom: 0,
+          child: Bottombar(type: 2),
         ),
       ],
     );
