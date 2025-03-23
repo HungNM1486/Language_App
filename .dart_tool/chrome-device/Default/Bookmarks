@@ -1,0 +1,134 @@
+{
+   "checksum": "eb67e98cb6c0d18597e36baca19aa64d",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13349850939418923",
+            "date_last_used": "0",
+            "guid": "fa84c80a-f7a2-48eb-b1a0-1998a3c09cd6",
+            "id": "12",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Careers at Samsung - Home",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "https://www.samsungcareers.com.vn/#/",
+            "visit_count": 0
+         }, {
+            "date_added": "13386695340091441",
+            "date_last_used": "0",
+            "guid": "3ce2c9e4-fdd3-4fbf-b34b-3e76a7d213d2",
+            "id": "13",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Phát triển PM HDV HKII 2024-2025 | Facebook",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "https://www.facebook.com/groups/soa2025",
+            "visit_count": 1
+         } ],
+         "date_added": "13387015958582497",
+         "date_last_used": "0",
+         "date_modified": "13386695340091441",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Favorites bar",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "other": {
+         "children": [ {
+            "date_added": "13313292294207344",
+            "date_last_used": "0",
+            "guid": "9c52afab-7b24-4dd4-923b-fbf9e7464f49",
+            "id": "6",
+            "name": "(23) Octave sử dụng fft()_ Xử lý tín hiệu số PTIT - YouTube",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "https://www.youtube.com/watch?v=wgy9sCK_SbI&t=838s",
+            "visit_count": 0
+         }, {
+            "date_added": "13312654988712275",
+            "date_last_used": "0",
+            "guid": "108a6438-addf-4bed-a041-8c506b1cf61c",
+            "id": "7",
+            "name": "Lập trình C++: Viết chương trình đầu tiên Hello World! - YouTube",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "https://www.youtube.com/watch?v=QOZJNJRkjJ8&list=PLZH87VT0E7ArjzU5ETdxH9ad5SX76009j",
+            "visit_count": 0
+         }, {
+            "date_added": "13316085455056115",
+            "date_last_used": "0",
+            "guid": "0eb28e0c-4d2f-416d-88c5-3b960baeb2b1",
+            "id": "8",
+            "name": "LISTENING Part 1: Photographs - NEW TOEIC FORMAT - Toeic Speaking Ms Ngoc",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "https://toeicspeakingmsngoc.com/part1",
+            "visit_count": 0
+         }, {
+            "date_added": "13316241010602402",
+            "date_last_used": "0",
+            "guid": "bb49b175-3ab3-433c-9b25-97ab1d6da550",
+            "id": "9",
+            "name": "LISTENING Part 2: Question & response - NEW TOEIC FORMAT - Toeic Speaking Ms Ngoc",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "https://toeicspeakingmsngoc.com/part2",
+            "visit_count": 0
+         }, {
+            "date_added": "13339958296330577",
+            "date_last_used": "0",
+            "guid": "e1452be1-fea1-4482-8bb7-fc709f19fc9f",
+            "id": "10",
+            "name": "Python 28tech - Google Tài liệu",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "https://docs.google.com/document/d/1MQormOxVqYjdUVVrVyu7RpnJygjctNdldAlRblU01oQ/edit?fbclid=IwAR1U63ilsepjTqPWJtxPX-LJWlUNV8IzJVtlcemLxFMEc-efpWUWq7fFmlc",
+            "visit_count": 0
+         }, {
+            "date_added": "13341910842188782",
+            "date_last_used": "0",
+            "guid": "056253e7-ca3b-4411-9646-269583f812f8",
+            "id": "11",
+            "name": "OOP - Google Drive",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "https://drive.google.com/drive/folders/18K_kOIeXQZgsZWHpCOvBDxaZvaNjVnbX?fbclid=IwAR2yW9KbL6DgJoClmV1g0cf0Xv3fZsKOBkrMhxwPDd0MNav8e5DRhVYd0LI",
+            "visit_count": 0
+         } ],
+         "date_added": "13387015958582501",
+         "date_last_used": "0",
+         "date_modified": "13341910842188782",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other favorites",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13387015958582505",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile favorites",
+         "source": "unknown",
+         "type": "folder"
+      }
+   },
+   "sync_metadata": "CjEKDgiIgQISCBwQgqSVAQAAEgAqGHFqYWRkNnF2NWxrVmNiZG13RnhtSFE9PUgDoAYHEq0BCA0SqAEKHFZHcWpBd1dkU0xCQ3p3aTZQWUhnWDlwb2xzbz0SJDNjZTJjOWU0LWZkZDMtNGZiZi1iMzRiLTNlNzZhN2QyMTNkMhgAIAAoADCboIik2jI45qSIpNoyQOakiKTaMkocNWdiWG0yaUJpSmk3Ry9tKzNSWUkvNWVqcTZFPVofIh3dSDBkYWlDK2RyZXNxNk5ENGpVbWJ5elpKbWpzPWVECP19wj4CYAUSrQEIDBKoAQocUXZtUllJakVUMVBta0RiQWpsUFFCR2d4QS9jPRIkZmE4NGM4MGEtZjdhMi00OGViLWIxYTAtMTk5OGEzYzA5Y2Q2GAAgACgAMPq8pIPRMTiuv6SD0TFArr+kg9ExShxEaWlpYU9jbHljTkw0bEJINEd4M2lqQUJqcm89Wh8iHbt3eTRBUDVuV1RhUmk4QzVST21Vam9lMlBRODg9ZSJNlAjCPgJgBRKOAQgBEokBChx5eEovNmZ2a2VjcjdrcDVFUXpCNHRXTHBkYkU9EiRjM2RjN2Y1Ny1jMWExLTVmMTQtYTFjMi0yNDUxZDI1YTg2MzUYACAAKAAw14nbkbAwOKDJoLKMMECgyaCyjDBKHGFSQ1dMZ2hGOWI1SW5xS0lEdnVKL2p2UWtGYz1aAGUAAAAAwj4CYAASrQEICxKoAQoceXc3andLSHQ1Nzl4WGVKRzE3R2plUDlYYjY4PRIkMDU2MjUzZTctY2EzYi00NDExLTk2NDYtMjY5NTgzZjgxMmY4GAAgACgAMOa06qzUMTixmKSytTFAsZiksrUxShw5a2ozYkRmajZFaFhyWkNSWmhQdjd2STRLTlE9Wh8iHfZEUjJIMjF3Z3l4NXRZRUhHNEZSYklITW11Tnc9ZfqR3tvCPgJgBRKtAQgJEqgBChwxSnFOODNxdzJnSENqOXI5RTJmNTE2RHZ3VW89EiRiYjQ5YjE3NS0zYWIzLTQzM2MtOWIyNS05N2FiMWQ2ZGE1NTAYACAAKAAw4LTqrNQxOI2ZpLK1MUCNmaSytTFKHDdZRHVIbkRnTWsrSEpuT3N1VFkxUktyYkxrND1aHyId2zFYOFB4NlNjbXFaaWVkOEpKN08rbDVieTJuQT1lyvkVccI+AmAFEq0BCAgSqAEKHE5Hc0FYS1BXMWRzcXpqNitmR3pBa3ExbGZZYz0SJDBlYjI4ZTBjLTRkMmYtNDE2ZC04OGM1LTNiOTYwYmFlYjJiMRgAIAAoADDhtOqs1DE47ZiksrUxQO2YpLK1MUocd0RncUowVWV1MmJXYU5MNm1BRy9hK1BaYllFPVofIh22MHVMcXlVVEI5UitpNERzS1NqbWxnM2VqSG00PWXK+RVxwj4CYAUSrAEIBxKnAQocaVdzZmx0djBzVFdqT0NDWU5CWHovMng2VzRnPRIkMTA4YTY0MzgtYWRkZi00YmVkLWEwNDEtOGM1MDZiMWNmNjFjGAAgACgAMOO06qzUMTiqmaSytTFAqpmksrUxShwrSEtBbVY1aHh4MXlOSW9XVmlzVlZySUFlazQ9Wh4iHGxQeVFRZWM4NzNMVGNsT0RWRGlQbmZXK1ZOaz1lOPk5M8I+AmAFEqwBCAYSpwEKHGd6M2JjRVlDMzltMFBpUDl4ZU1Cb1hKamIwbz0SJDljNTJhZmFiLTdiMjQtNGRkNC05MjNiLWZiZjllNzQ2NGY0ORgAIAAoADC1k6SytTE4zpiksrUxQM6YpLK1MUocbzVGNG1WRkhheVcrS2U5SWFFMm45YlBWelRvPVoeIhxoWFFLMC9KejVLU21lQmJndmhWbkN5QjFENEk9ZTj5OTPCPgJgBRKOAQgCEokBChxZY1NUb252RVNQd3FDczRMMmNyVmh2NjhMOTg9EiQ3Y2QyZGE3Zi0xNmI3LTU0MGQtYTVmZC04Y2JmNGM1YWVlMDUYACAAKAAw14nbkbAwOL/JoLKMMEC/yaCyjDBKHG9QVmtod0JSYlY2NUtDV1IyK0lPTkhXb091OD1aAGUAAAAAwj4CYAASrQEIChKoAQocRzlibUNQTENKb0dLR3h5V2hOS3I2K250UWVBPRIkZTE0NTJiZTEtZmVhMS00NDgyLThiYjctZmM3MDlmMTlmYzlmGAAgACgAMN606qzUMTj0l6SytTFA9JeksrUxShxRdUp0ajd2a0JwdktXZnhOb24rR3YvRzErTlE9Wh8iHe0zMDhtN2UyS1NGY01Qb05vN0xDOVlHNUtwd3c9ZdVHTTTCPgJgBRKOAQgDEokBChxuamdEdTg4ZUNydlhwODZwRDdmSEdjcUZwODg9EiRlMThiMzA2MC0xOWM3LTU0NzYtYmJhZi03OGZkOGExMTc4MzMYACAAKAAw14nbkbAwOKzKoLKMMECsyqCyjDBKHHl6TkIwMWNuNTRBN2NSVTB1VCsvUGdtVHRVbz1aAGUAAAAAwj4CYAAwADgA",
+   "version": 1
+}

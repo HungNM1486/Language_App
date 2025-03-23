@@ -1,0 +1,40 @@
+# Flutter/Dart/Pub related
+.pub/
+packages/
+build/
+Flutter/.generated/
+*.iml
+.idea/
+*.lock
+*.log
+
+# MacOS
+.DS_Store
+
+# Android
+*.apk
+*.ap_
+*.dex
+*.class
+*.jar
+*.keystore
+local.properties
+*.jks
+*.hprof
+
+# iOS
+DerivedData/
+*.xcworkspace
+*.xcuserstate
+*.xcuserdatad/
+*.xcodeproj/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xccheckout
+*.xcscheme
+*.xcscmblueprint
+
+# VS Code
+.vscode/
