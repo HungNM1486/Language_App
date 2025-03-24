@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:language_app/hungnm/activity.dart';
 import 'package:language_app/widget/bottom_bar.dart';
 import 'package:language_app/hungnm/add_fr.dart';
-import 'package:language_app/hungnm/setting/setting.dart'; // Import file setting.dart
+import 'package:language_app/hungnm/setting/setting_screen.dart'; // Import file setting.dart
 import 'package:qr_flutter/qr_flutter.dart'; // Package để tạo mã QR
 import 'package:share_plus/share_plus.dart'; // Package để chia sẻ
 import 'package:clipboard/clipboard.dart'; // Package clipboard
@@ -20,41 +20,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final pix = (size.width / 375).clamp(0.8, 1.2); // Responsive ratio với giới hạn
+    final pix =
+        (size.width / 375).clamp(0.8, 1.2); // Responsive ratio với giới hạn
 
     return Scaffold(
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.only(top: 80 * pix),
-              child: Column(
-                children: [
-                  SizedBox(height: 40 * pix),
-                  _buildUserInfo(size, pix),
-                  _buildLanguageAndFriendsSection(size, pix),
-                  _buildAddFriendAndShareSection(size, pix),
-                  _buildActivitySection(size, pix),
-                  _buildAchievementsSection(size, pix),
-                ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(top: 40 * pix),
+          child: Column(
+            children: [
+              // Nút cài đặt được đưa vào đây để cuộn theo nội dung
+              Align(
+                alignment: Alignment.topRight,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 16 * pix),
+                  child: IconButton(
+                    icon: Icon(Icons.settings,
+                        size: 28 * pix, color: Colors.grey),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SettingScreen()),
+                      );
+                    },
+                  ),
+                ),
               ),
-            ),
+              SizedBox(height: 40 * pix),
+              _buildUserInfo(size, pix),
+              _buildLanguageAndFriendsSection(size, pix),
+              _buildAddFriendAndShareSection(size, pix),
+              _buildActivitySection(size, pix),
+              _buildAchievementsSection(size, pix),
+            ],
           ),
-          // Icon Settings ở trên cùng bên phải
-          Positioned(
-            top: 40 * pix, // Điều chỉnh vị trí theo giao diện
-            right: 16 * pix,
-            child: IconButton(
-              icon: Icon(Icons.settings, size: 28 * pix, color: Colors.grey),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SettingScreen()),
-                );
-              },
-            ),
-          ),
-        ],
+        ),
       ),
       bottomNavigationBar: const Bottombar(type: 5),
     );
@@ -127,7 +128,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void _showShareOptions(BuildContext context, double pix) {
-    const String inviteLink = 'https://example.com/invite/abc123'; // Đường dẫn mẫu
+    const String inviteLink =
+        'https://example.com/invite/abc123'; // Đường dẫn mẫu
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -157,24 +159,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.message, size: 30 * pix, color: const Color(0xff5B7BFE)),
+                    icon: Icon(Icons.message,
+                        size: 30 * pix, color: const Color(0xff5B7BFE)),
                     onPressed: () {
-                      Share.share('Mời bạn tham gia: $inviteLink', subject: 'Chia sẻ qua tin nhắn');
+                      Share.share('Mời bạn tham gia: $inviteLink',
+                          subject: 'Chia sẻ qua tin nhắn');
                     },
                   ),
                   IconButton(
-                    icon: Icon(Icons.email, size: 30 * pix, color: const Color(0xff5B7BFE)),
+                    icon: Icon(Icons.email,
+                        size: 30 * pix, color: const Color(0xff5B7BFE)),
                     onPressed: () {
-                      Share.share('Mời bạn tham gia: $inviteLink', subject: 'Chia sẻ qua email');
+                      Share.share('Mời bạn tham gia: $inviteLink',
+                          subject: 'Chia sẻ qua email');
                     },
                   ),
                   IconButton(
-                    icon: Icon(Icons.copy, size: 30 * pix, color: const Color(0xff5B7BFE)),
+                    icon: Icon(Icons.copy,
+                        size: 30 * pix, color: const Color(0xff5B7BFE)),
                     onPressed: () async {
                       await FlutterClipboard.copy(inviteLink);
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Đã sao chép: $inviteLink')),
+                          const SnackBar(
+                              content: Text('Đã sao chép: $inviteLink')),
                         );
                       }
                     },
@@ -313,7 +321,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const ActivityScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => const ActivityScreen()),
                   );
                 },
                 child: Text(
@@ -427,27 +436,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _buildBadgeItem(pix, 'Huy hiệu 1', 'Mô tả huy hiệu 1', 'lib/res/imagesLA/coviet.png'),
+                  _buildBadgeItem(pix, 'Huy hiệu 1', 'Mô tả huy hiệu 1',
+                      'lib/res/imagesLA/coviet.png'),
                   SizedBox(width: 20 * pix),
-                  _buildBadgeItem(pix, 'Huy hiệu 2', 'Mô tả huy hiệu 2', 'lib/res/imagesLA/coviet.png'),
+                  _buildBadgeItem(pix, 'Huy hiệu 2', 'Mô tả huy hiệu 2',
+                      'lib/res/imagesLA/coviet.png'),
                 ],
               ),
               SizedBox(height: 15 * pix),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _buildBadgeItem(pix, 'Huy hiệu 3', 'Mô tả huy hiệu 3', 'lib/res/imagesLA/coviet.png'),
+                  _buildBadgeItem(pix, 'Huy hiệu 3', 'Mô tả huy hiệu 3',
+                      'lib/res/imagesLA/coviet.png'),
                   SizedBox(width: 20 * pix),
-                  _buildBadgeItem(pix, 'Huy hiệu 4', 'Mô tả huy hiệu 4', 'lib/res/imagesLA/coviet.png'),
+                  _buildBadgeItem(pix, 'Huy hiệu 4', 'Mô tả huy hiệu 4',
+                      'lib/res/imagesLA/coviet.png'),
                 ],
               ),
               SizedBox(height: 15 * pix),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _buildBadgeItem(pix, 'Huy hiệu 5', 'Mô tả huy hiệu 5', 'lib/res/imagesLA/coviet.png'),
+                  _buildBadgeItem(pix, 'Huy hiệu 5', 'Mô tả huy hiệu 5',
+                      'lib/res/imagesLA/coviet.png'),
                   SizedBox(width: 20 * pix),
-                  _buildBadgeItem(pix, 'Huy hiệu 6', 'Mô tả huy hiệu 6', 'lib/res/imagesLA/coviet.png'),
+                  _buildBadgeItem(pix, 'Huy hiệu 6', 'Mô tả huy hiệu 6',
+                      'lib/res/imagesLA/coviet.png'),
                 ],
               ),
             ],
@@ -457,7 +472,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget _buildBadgeItem(double pix, String title, String description, String imagePath) {
+  Widget _buildBadgeItem(
+      double pix, String title, String description, String imagePath) {
     return Container(
       width: 150 * pix,
       padding: EdgeInsets.all(10 * pix),

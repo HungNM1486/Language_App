@@ -34,5 +34,22 @@
   "soundUnderDevelopment": "Sound settings page (under development)",
   "notificationsUnderDevelopment": "Notifications settings page (under development)",
   "supportUnderDevelopment": "Support page (under development)",
-  "aboutUnderDevelopment": "About page (under development)"
+  "aboutUnderDevelopment": "About page (under development)",
+  "support": "Support",
+  "developmentTeamInfo": "Development Team Information",
+  "contactSupport": "Contact Support",
+  "about": "About",
+  "introduction": "Introduction",
+  "developmentTeam": "Development Team",
+  "contact": "Contact",
+  "saveChanges": "Save Changes",
+  "deleteConfirmation": "Are you sure you want to delete your account? This action cannot be undone.",
+  "notifications": "Notifications",
+  "courseNotifications": "Course Notifications",
+  "courseNotificationsDesc": "Receive notifications about course progress and updates.",
+  "reminderNotifications": "Learning Reminders",
+  "reminderNotificationsDesc": "Receive reminders to maintain your learning habit.",
+  "updateNotifications": "App Updates",
+  "updateNotificationsDesc": "Receive notifications when a new version is available.",
+  "saveChanges": "Save Changes"
 }

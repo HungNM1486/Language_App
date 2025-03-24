@@ -304,6 +304,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'About page (under development)'**
   String get aboutUnderDevelopment;
+
+  /// No description provided for @developmentTeamInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Development Team Information'**
+  String get developmentTeamInfo;
+
+  /// No description provided for @contactSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Support'**
+  String get contactSupport;
+
+  /// No description provided for @introduction.
+  ///
+  /// In en, this message translates to:
+  /// **'Introduction'**
+  String get introduction;
+
+  /// No description provided for @developmentTeam.
+  ///
+  /// In en, this message translates to:
+  /// **'Development Team'**
+  String get developmentTeam;
+
+  /// No description provided for @contact.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get contact;
+
+  /// No description provided for @saveChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Changes'**
+  String get saveChanges;
+
+  /// No description provided for @deleteConfirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete your account? This action cannot be undone.'**
+  String get deleteConfirmation;
+
+  /// No description provided for @courseNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Course Notifications'**
+  String get courseNotifications;
+
+  /// No description provided for @courseNotificationsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive notifications about course progress and updates.'**
+  String get courseNotificationsDesc;
+
+  /// No description provided for @reminderNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Learning Reminders'**
+  String get reminderNotifications;
+
+  /// No description provided for @reminderNotificationsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive reminders to maintain your learning habit.'**
+  String get reminderNotificationsDesc;
+
+  /// No description provided for @updateNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'App Updates'**
+  String get updateNotifications;
+
+  /// No description provided for @updateNotificationsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive notifications when a new version is available.'**
+  String get updateNotificationsDesc;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

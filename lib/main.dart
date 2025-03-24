@@ -2,10 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:language_app/phunv/LoginSignup/login_screen.dart';
 import 'package:provider/provider.dart';
-import 'locale_provider.dart'; // File bạn đã tạo trước đó
+import 'package:language_app/locale_provider.dart'; // File bạn đã tạo trước đó
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Import file sinh ra
+import 'package:flutter_local_notifications/flutter_local_notifications.dart'; // Import flutter_local_notifications
 
-void main() {
+// Khởi tạo plugin thông báo
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('app_icon');
+  const InitializationSettings initializationSettings = InitializationSettings(android: initializationSettingsAndroid);
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+
+  // Gửi thông báo chào mừng
+  const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
+    'welcome_channel',
+    'Welcome Notifications',
+    channelDescription: 'Notifications when app starts',
+    importance: Importance.max,
+    priority: Priority.high,
+  );
+  const NotificationDetails notificationDetails = NotificationDetails(android: androidDetails);
+  await flutterLocalNotificationsPlugin.show(
+    0,
+    'Chào mừng đến Language App',
+    'Bắt đầu học ngoại ngữ ngay hôm nay!',
+    notificationDetails,
+  );
+
   runApp(
     ChangeNotifierProvider(
       create: (context) => LocaleProvider(),

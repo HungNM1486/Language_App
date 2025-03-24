@@ -112,4 +112,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get aboutUnderDevelopment => 'About page (under development)';
+
+  @override
+  String get developmentTeamInfo => 'Development Team Information';
+
+  @override
+  String get contactSupport => 'Contact Support';
+
+  @override
+  String get introduction => 'Introduction';
+
+  @override
+  String get developmentTeam => 'Development Team';
+
+  @override
+  String get contact => 'Contact';
+
+  @override
+  String get saveChanges => 'Save Changes';
+
+  @override
+  String get deleteConfirmation => 'Are you sure you want to delete your account? This action cannot be undone.';
+
+  @override
+  String get courseNotifications => 'Course Notifications';
+
+  @override
+  String get courseNotificationsDesc => 'Receive notifications about course progress and updates.';
+
+  @override
+  String get reminderNotifications => 'Learning Reminders';
+
+  @override
+  String get reminderNotificationsDesc => 'Receive reminders to maintain your learning habit.';
+
+  @override
+  String get updateNotifications => 'App Updates';
+
+  @override
+  String get updateNotificationsDesc => 'Receive notifications when a new version is available.';
 }

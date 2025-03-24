@@ -34,5 +34,22 @@
   "notificationsUnderDevelopment": "Trang cài đặt thông báo (đang phát triển)",
   "supportUnderDevelopment": "Trang hỗ trợ (đang phát triển)",
   "aboutUnderDevelopment": "Trang thông tin ứng dụng (đang phát triển)",
-  "noAccount": "Bạn chưa có tài khoản?"
+  "noAccount": "Bạn chưa có tài khoản?",
+  "support": "Hỗ trợ",
+  "developmentTeamInfo": "Thông tin nhóm phát triển",
+  "contactSupport": "Liên hệ hỗ trợ",
+  "about": "Thông tin ứng dụng",
+  "introduction": "Giới thiệu",
+  "developmentTeam": "Nhóm phát triển",
+  "contact": "Liên hệ",
+  "saveChanges": "Lưu thay đổi",
+  "deleteConfirmation": "Bạn có chắc chắn muốn xóa tài khoản? Hành động này không thể hoàn tác.",
+  "notifications": "Thông báo",
+  "courseNotifications": "Thông báo khóa học",
+  "courseNotificationsDesc": "Nhận thông báo về tiến độ và cập nhật khóa học.",
+  "reminderNotifications": "Nhắc nhở học tập",
+  "reminderNotificationsDesc": "Nhận nhắc nhở để duy trì thói quen học tập.",
+  "updateNotifications": "Cập nhật ứng dụng",
+  "updateNotificationsDesc": "Nhận thông báo khi có phiên bản mới.",
+  "saveChanges": "Lưu thay đổi"
 }

@@ -112,4 +112,43 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get aboutUnderDevelopment => 'Trang thông tin ứng dụng (đang phát triển)';
+
+  @override
+  String get developmentTeamInfo => 'Thông tin nhóm phát triển';
+
+  @override
+  String get contactSupport => 'Liên hệ hỗ trợ';
+
+  @override
+  String get introduction => 'Giới thiệu';
+
+  @override
+  String get developmentTeam => 'Nhóm phát triển';
+
+  @override
+  String get contact => 'Liên hệ';
+
+  @override
+  String get saveChanges => 'Lưu thay đổi';
+
+  @override
+  String get deleteConfirmation => 'Bạn có chắc chắn muốn xóa tài khoản? Hành động này không thể hoàn tác.';
+
+  @override
+  String get courseNotifications => 'Thông báo khóa học';
+
+  @override
+  String get courseNotificationsDesc => 'Nhận thông báo về tiến độ và cập nhật khóa học.';
+
+  @override
+  String get reminderNotifications => 'Nhắc nhở học tập';
+
+  @override
+  String get reminderNotificationsDesc => 'Nhận nhắc nhở để duy trì thói quen học tập.';
+
+  @override
+  String get updateNotifications => 'Cập nhật ứng dụng';
+
+  @override
+  String get updateNotificationsDesc => 'Nhận thông báo khi có phiên bản mới.';
 }
