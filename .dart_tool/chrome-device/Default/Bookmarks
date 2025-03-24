@@ -1,39 +1,11 @@
 {
-   "checksum": "eb67e98cb6c0d18597e36baca19aa64d",
+   "checksum": "5a319cbfbf9ba65a31d193b8c2454c78",
    "roots": {
       "bookmark_bar": {
-         "children": [ {
-            "date_added": "13349850939418923",
-            "date_last_used": "0",
-            "guid": "fa84c80a-f7a2-48eb-b1a0-1998a3c09cd6",
-            "id": "12",
-            "meta_info": {
-               "power_bookmark_meta": ""
-            },
-            "name": "Careers at Samsung - Home",
-            "show_icon": false,
-            "source": "sync",
-            "type": "url",
-            "url": "https://www.samsungcareers.com.vn/#/",
-            "visit_count": 0
-         }, {
-            "date_added": "13386695340091441",
-            "date_last_used": "0",
-            "guid": "3ce2c9e4-fdd3-4fbf-b34b-3e76a7d213d2",
-            "id": "13",
-            "meta_info": {
-               "power_bookmark_meta": ""
-            },
-            "name": "Phát triển PM HDV HKII 2024-2025 | Facebook",
-            "show_icon": false,
-            "source": "sync",
-            "type": "url",
-            "url": "https://www.facebook.com/groups/soa2025",
-            "visit_count": 1
-         } ],
-         "date_added": "13387015958582497",
+         "children": [  ],
+         "date_added": "13387257102278152",
          "date_last_used": "0",
-         "date_modified": "13386695340091441",
+         "date_modified": "0",
          "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
          "id": "1",
          "name": "Favorites bar",
@@ -108,7 +80,7 @@
             "url": "https://drive.google.com/drive/folders/18K_kOIeXQZgsZWHpCOvBDxaZvaNjVnbX?fbclid=IwAR2yW9KbL6DgJoClmV1g0cf0Xv3fZsKOBkrMhxwPDd0MNav8e5DRhVYd0LI",
             "visit_count": 0
          } ],
-         "date_added": "13387015958582501",
+         "date_added": "13387257102278156",
          "date_last_used": "0",
          "date_modified": "13341910842188782",
          "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
@@ -119,7 +91,7 @@
       },
       "synced": {
          "children": [  ],
-         "date_added": "13387015958582505",
+         "date_added": "13387257102278158",
          "date_last_used": "0",
          "date_modified": "0",
          "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
@@ -129,6 +101,6 @@
          "type": "folder"
       }
    },
-   "sync_metadata": "CjEKDgiIgQISCBwQgqSVAQAAEgAqGHFqYWRkNnF2NWxrVmNiZG13RnhtSFE9PUgDoAYHEq0BCA0SqAEKHFZHcWpBd1dkU0xCQ3p3aTZQWUhnWDlwb2xzbz0SJDNjZTJjOWU0LWZkZDMtNGZiZi1iMzRiLTNlNzZhN2QyMTNkMhgAIAAoADCboIik2jI45qSIpNoyQOakiKTaMkocNWdiWG0yaUJpSmk3Ry9tKzNSWUkvNWVqcTZFPVofIh3dSDBkYWlDK2RyZXNxNk5ENGpVbWJ5elpKbWpzPWVECP19wj4CYAUSrQEIDBKoAQocUXZtUllJakVUMVBta0RiQWpsUFFCR2d4QS9jPRIkZmE4NGM4MGEtZjdhMi00OGViLWIxYTAtMTk5OGEzYzA5Y2Q2GAAgACgAMPq8pIPRMTiuv6SD0TFArr+kg9ExShxEaWlpYU9jbHljTkw0bEJINEd4M2lqQUJqcm89Wh8iHbt3eTRBUDVuV1RhUmk4QzVST21Vam9lMlBRODg9ZSJNlAjCPgJgBRKOAQgBEokBChx5eEovNmZ2a2VjcjdrcDVFUXpCNHRXTHBkYkU9EiRjM2RjN2Y1Ny1jMWExLTVmMTQtYTFjMi0yNDUxZDI1YTg2MzUYACAAKAAw14nbkbAwOKDJoLKMMECgyaCyjDBKHGFSQ1dMZ2hGOWI1SW5xS0lEdnVKL2p2UWtGYz1aAGUAAAAAwj4CYAASrQEICxKoAQoceXc3andLSHQ1Nzl4WGVKRzE3R2plUDlYYjY4PRIkMDU2MjUzZTctY2EzYi00NDExLTk2NDYtMjY5NTgzZjgxMmY4GAAgACgAMOa06qzUMTixmKSytTFAsZiksrUxShw5a2ozYkRmajZFaFhyWkNSWmhQdjd2STRLTlE9Wh8iHfZEUjJIMjF3Z3l4NXRZRUhHNEZSYklITW11Tnc9ZfqR3tvCPgJgBRKtAQgJEqgBChwxSnFOODNxdzJnSENqOXI5RTJmNTE2RHZ3VW89EiRiYjQ5YjE3NS0zYWIzLTQzM2MtOWIyNS05N2FiMWQ2ZGE1NTAYACAAKAAw4LTqrNQxOI2ZpLK1MUCNmaSytTFKHDdZRHVIbkRnTWsrSEpuT3N1VFkxUktyYkxrND1aHyId2zFYOFB4NlNjbXFaaWVkOEpKN08rbDVieTJuQT1lyvkVccI+AmAFEq0BCAgSqAEKHE5Hc0FYS1BXMWRzcXpqNitmR3pBa3ExbGZZYz0SJDBlYjI4ZTBjLTRkMmYtNDE2ZC04OGM1LTNiOTYwYmFlYjJiMRgAIAAoADDhtOqs1DE47ZiksrUxQO2YpLK1MUocd0RncUowVWV1MmJXYU5MNm1BRy9hK1BaYllFPVofIh22MHVMcXlVVEI5UitpNERzS1NqbWxnM2VqSG00PWXK+RVxwj4CYAUSrAEIBxKnAQocaVdzZmx0djBzVFdqT0NDWU5CWHovMng2VzRnPRIkMTA4YTY0MzgtYWRkZi00YmVkLWEwNDEtOGM1MDZiMWNmNjFjGAAgACgAMOO06qzUMTiqmaSytTFAqpmksrUxShwrSEtBbVY1aHh4MXlOSW9XVmlzVlZySUFlazQ9Wh4iHGxQeVFRZWM4NzNMVGNsT0RWRGlQbmZXK1ZOaz1lOPk5M8I+AmAFEqwBCAYSpwEKHGd6M2JjRVlDMzltMFBpUDl4ZU1Cb1hKamIwbz0SJDljNTJhZmFiLTdiMjQtNGRkNC05MjNiLWZiZjllNzQ2NGY0ORgAIAAoADC1k6SytTE4zpiksrUxQM6YpLK1MUocbzVGNG1WRkhheVcrS2U5SWFFMm45YlBWelRvPVoeIhxoWFFLMC9KejVLU21lQmJndmhWbkN5QjFENEk9ZTj5OTPCPgJgBRKOAQgCEokBChxZY1NUb252RVNQd3FDczRMMmNyVmh2NjhMOTg9EiQ3Y2QyZGE3Zi0xNmI3LTU0MGQtYTVmZC04Y2JmNGM1YWVlMDUYACAAKAAw14nbkbAwOL/JoLKMMEC/yaCyjDBKHG9QVmtod0JSYlY2NUtDV1IyK0lPTkhXb091OD1aAGUAAAAAwj4CYAASrQEIChKoAQocRzlibUNQTENKb0dLR3h5V2hOS3I2K250UWVBPRIkZTE0NTJiZTEtZmVhMS00NDgyLThiYjctZmM3MDlmMTlmYzlmGAAgACgAMN606qzUMTj0l6SytTFA9JeksrUxShxRdUp0ajd2a0JwdktXZnhOb24rR3YvRzErTlE9Wh8iHe0zMDhtN2UyS1NGY01Qb05vN0xDOVlHNUtwd3c9ZdVHTTTCPgJgBRKOAQgDEokBChxuamdEdTg4ZUNydlhwODZwRDdmSEdjcUZwODg9EiRlMThiMzA2MC0xOWM3LTU0NzYtYmJhZi03OGZkOGExMTc4MzMYACAAKAAw14nbkbAwOKzKoLKMMECsyqCyjDBKHHl6TkIwMWNuNTRBN2NSVTB1VCsvUGdtVHRVbz1aAGUAAAAAwj4CYAAwADgA",
+   "sync_metadata": "CjEKDgiIgQISCALWTsOVAQAAEgAqGHJZZGdCSjFxemlyTFV1cjhHdU9IQlE9PUgDoAYHEo4BCAESiQEKHHl4Si82ZnZrZWNyN2twNUVRekI0dFdMcGRiRT0SJGMzZGM3ZjU3LWMxYTEtNWYxNC1hMWMyLTI0NTFkMjVhODYzNRgAIAAoADDXiduRsDA4oMmgsowwQKDJoLKMMEocYVJDV0xnaEY5YjVJbnFLSUR2dUovanZRa0ZjPVoAZQAAAADCPgJgABKtAQgLEqgBChx5dzdqd0tIdDU3OXhYZUpHMTdHamVQOVhiNjg9EiQwNTYyNTNlNy1jYTNiLTQ0MTEtOTY0Ni0yNjk1ODNmODEyZjgYACAAKAAw5rTqrNQxOLGYpLK1MUCxmKSytTFKHDlrajNiRGZqNkVoWHJaQ1JaaFB2N3ZJNEtOUT1aHyId9kRSMkgyMXdneXg1dFlFSEc0RlJiSUhNbXVOdz1l+pHe28I+AmAFEq0BCAkSqAEKHDFKcU44M3F3MmdIQ2o5cjlFMmY1MTZEdndVbz0SJGJiNDliMTc1LTNhYjMtNDMzYy05YjI1LTk3YWIxZDZkYTU1MBgAIAAoADDgtOqs1DE4jZmksrUxQI2ZpLK1MUocN1lEdUhuRGdNaytISm5Pc3VUWTFSS3JiTGs0PVofIh3bMVg4UHg2U2NtcVppZWQ4Sko3TytsNWJ5Mm5BPWXK+RVxwj4CYAUSrQEICBKoAQocTkdzQVhLUFcxZHNxemo2K2ZHekFrcTFsZlljPRIkMGViMjhlMGMtNGQyZi00MTZkLTg4YzUtM2I5NjBiYWViMmIxGAAgACgAMOG06qzUMTjtmKSytTFA7ZiksrUxShx3RGdxSjBVZXUyYldhTkw2bUFHL2ErUFpiWUU9Wh8iHbYwdUxxeVVUQjlSK2k0RHNLU2ptbGczZWpIbTQ9Zcr5FXHCPgJgBRKsAQgHEqcBChxpV3NmbHR2MHNUV2pPQ0NZTkJYei8yeDZXNGc9EiQxMDhhNjQzOC1hZGRmLTRiZWQtYTA0MS04YzUwNmIxY2Y2MWMYACAAKAAw47TqrNQxOKqZpLK1MUCqmaSytTFKHCtIS0FtVjVoeHgxeU5Jb1dWaXNWVnJJQWVrND1aHiIcbFB5UVFlYzg3M0xUY2xPRFZEaVBuZlcrVk5rPWU4+Tkzwj4CYAUSrAEIBhKnAQocZ3ozYmNFWUMzOW0wUGlQOXhlTUJvWEpqYjBvPRIkOWM1MmFmYWItN2IyNC00ZGQ0LTkyM2ItZmJmOWU3NDY0ZjQ5GAAgACgAMLWTpLK1MTjOmKSytTFAzpiksrUxShxvNUY0bVZGSGF5VytLZTlJYUUybjliUFZ6VG89Wh4iHGhYUUswL0p6NUtTbWVCYmd2aFZuQ3lCMUQ0ST1lOPk5M8I+AmAFEo4BCAISiQEKHFljU1RvbnZFU1B3cUNzNEwyY3JWaHY2OEw5OD0SJDdjZDJkYTdmLTE2YjctNTQwZC1hNWZkLThjYmY0YzVhZWUwNRgAIAAoADDXiduRsDA4v8mgsowwQL/JoLKMMEocb1BWa2h3QlJiVjY1S0NXUjIrSU9OSFdvT3U4PVoAZQAAAADCPgJgABKtAQgKEqgBChxHOWJtQ1BMQ0pvR0tHeHlXaE5LcjYrbnRRZUE9EiRlMTQ1MmJlMS1mZWExLTQ0ODItOGJiNy1mYzcwOWYxOWZjOWYYACAAKAAw3rTqrNQxOPSXpLK1MUD0l6SytTFKHFF1SnRqN3ZrQnB2S1dmeE5vbitHdi9HMStOUT1aHyId7TMwOG03ZTJLU0ZjTVBvTm83TEM5WUc1S3B3dz1l1UdNNMI+AmAFEo4BCAMSiQEKHG5qZ0R1ODhlQ3J2WHA4NnBEN2ZIR2NxRnA4OD0SJGUxOGIzMDYwLTE5YzctNTQ3Ni1iYmFmLTc4ZmQ4YTExNzgzMxgAIAAoADDXiduRsDA4rMqgsowwQKzKoLKMMEoceXpOQjAxY241NEE3Y1JVMHVUKy9QZ21UdFVvPVoAZQAAAADCPgJgADAAOAA=",
    "version": 1
 }

@@ -5,7 +5,6 @@ import 'package:clipboard/clipboard.dart'; // Package clipboard mới
 import 'package:language_app/hungnm/profile.dart';
 import 'package:language_app/hungnm/find_fr.dart';
 
-
 class AddFrScreen extends StatelessWidget {
   const AddFrScreen({super.key});
 
@@ -26,7 +25,7 @@ class AddFrScreen extends StatelessWidget {
                   SizedBox(height: 60 * pix), // Khoảng trống cho TopBar
                   Text(
                     'Thêm bạn bè',
-                    style: TextStyle( 
+                    style: TextStyle(
                       fontSize: 24 * pix,
                       fontFamily: 'BeVietnamPro',
                       fontWeight: FontWeight.bold,
@@ -41,7 +40,8 @@ class AddFrScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const FindFrSreen ()),
+                        MaterialPageRoute(
+                            builder: (context) => const FindFrSreen()),
                       );
                     },
                     pix: pix,
@@ -111,7 +111,7 @@ class AddFrScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(12 * pix),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
+              color: Colors.grey.withAlpha((0.2 * 255).toInt()),
               blurRadius: 6 * pix,
               offset: Offset(0, 2 * pix),
             ),
@@ -121,7 +121,8 @@ class AddFrScreen extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 16 * pix,
-              backgroundColor: const Color(0xff5B7BFE).withOpacity(0.1),
+              backgroundColor:
+                  const Color(0xff5B7BFE).withAlpha((0.1 * 255).toInt()),
               child: Icon(icon, size: 20 * pix, color: const Color(0xff5B7BFE)),
             ),
             SizedBox(width: 12 * pix),
@@ -141,7 +142,8 @@ class AddFrScreen extends StatelessWidget {
 
   // Hiển thị modal bottom sheet chứa mã QR và tùy chọn chia sẻ
   void _showShareOptions(BuildContext context, double pix) {
-    const String inviteLink = 'https://example.com/invite/abc123'; // Đường dẫn mẫu
+    const String inviteLink =
+        'https://example.com/invite/abc123'; // Đường dẫn mẫu
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -171,25 +173,31 @@ class AddFrScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.message, size: 30 * pix, color: const Color(0xff5B7BFE)),
+                    icon: Icon(Icons.message,
+                        size: 30 * pix, color: const Color(0xff5B7BFE)),
                     onPressed: () {
-                      Share.share('Mời bạn tham gia: $inviteLink', subject: 'Chia sẻ qua tin nhắn');
+                      Share.share('Mời bạn tham gia: $inviteLink',
+                          subject: 'Chia sẻ qua tin nhắn');
                     },
                   ),
                   IconButton(
-                    icon: Icon(Icons.email, size: 30 * pix, color: const Color(0xff5B7BFE)),
+                    icon: Icon(Icons.email,
+                        size: 30 * pix, color: const Color(0xff5B7BFE)),
                     onPressed: () {
-                      Share.share('Mời bạn tham gia: $inviteLink', subject: 'Chia sẻ qua email');
+                      Share.share('Mời bạn tham gia: $inviteLink',
+                          subject: 'Chia sẻ qua email');
                     },
                   ),
                   IconButton(
-                    icon: Icon(Icons.copy, size: 30 * pix, color: const Color(0xff5B7BFE)),
-                    onPressed: () {
-                      FlutterClipboard.copy(inviteLink).then((value) {
+                    icon: Icon(Icons.copy,
+                        size: 30 * pix, color: const Color(0xff5B7BFE)),
+                    onPressed: () async {
+                      await FlutterClipboard.copy(inviteLink);
+                      if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Đã sao chép: $inviteLink')),
+                          const SnackBar(content: Text('Đã sao chép: $inviteLink')),
                         );
-                      });
+                      }
                     },
                   ),
                 ],

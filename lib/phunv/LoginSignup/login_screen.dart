@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:language_app/phunv/LoginSignup/signup_screen.dart';
 import 'package:language_app/phunv/home_screen.dart';
 import 'package:language_app/res/imagesLA/app_images.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Thêm import
 
-// Màn hình đăng nhập với hai trạng thái: intro và form đăng nhập
 class Loginscreen extends StatefulWidget {
   const Loginscreen({super.key});
 
@@ -17,22 +17,21 @@ class _LoginscreenState extends State<Loginscreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size; // Kích thước màn hình
-    final pix = size.width / 375; // Tỷ lệ responsive dựa trên chiều rộng 375px
+    final size = MediaQuery.of(context).size;
+    final pix = size.width / 375;
 
     return Scaffold(
       body: isIntro
-          ? _buildIntroScreen(size, pix) // Màn hình giới thiệu
-          : _buildLoginForm(size, pix), // Form đăng nhập
+          ? _buildIntroScreen(size, pix)
+          : _buildLoginForm(size, pix),
     );
   }
 
-  // Xây dựng màn hình intro
   Widget _buildIntroScreen(Size size, double pix) {
     return InkWell(
       onTap: () {
         setState(() {
-          isIntro = false; // Chuyển sang form đăng nhập khi nhấn
+          isIntro = false;
         });
       },
       child: Container(
@@ -40,7 +39,7 @@ class _LoginscreenState extends State<Loginscreen> {
         width: size.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(AppImages.intro), // Ảnh intro toàn màn hình
+            image: AssetImage(AppImages.intro),
             fit: BoxFit.cover,
           ),
         ),
@@ -48,33 +47,32 @@ class _LoginscreenState extends State<Loginscreen> {
     );
   }
 
-  // Xây dựng form đăng nhập
   Widget _buildLoginForm(Size size, double pix) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          _buildHeader(size, pix), // Thanh tiêu đề
-          _buildAvatar(pix), // Avatar trung tâm
-          _buildEmailField(size, pix), // Trường nhập email
+          _buildHeader(size, pix),
+          _buildAvatar(pix),
+          _buildEmailField(size, pix),
           SizedBox(height: 16 * pix),
-          _buildPasswordField(size, pix), // Trường nhập mật khẩu
-          _buildForgotPassword(size, pix), // Link quên mật khẩu
+          _buildPasswordField(size, pix),
+          _buildForgotPassword(size, pix),
           SizedBox(height: 69 * pix),
-          _buildLoginButton(size, pix), // Nút đăng nhập
+          _buildLoginButton(size, pix),
           SizedBox(height: 10 * pix),
-          _buildDivider(size, pix), // Dòng "Or"
-          _buildSignupLink(size, pix), // Link đăng ký
+          _buildDivider(size, pix),
+          _buildSignupLink(size, pix),
         ],
       ),
     );
   }
 
-  // Thanh tiêu đề với nút quay lại
   Widget _buildHeader(Size size, double pix) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       height: 100 * pix,
       width: size.width,
-      color: const Color(0xff43AAFF), // Màu nền xanh
+      color: const Color(0xff43AAFF),
       child: Row(
         children: [
           Container(
@@ -83,7 +81,7 @@ class _LoginscreenState extends State<Loginscreen> {
             child: IconButton(
               onPressed: () {
                 setState(() {
-                  isIntro = true; // Quay lại intro
+                  isIntro = true;
                 });
               },
               icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -95,7 +93,7 @@ class _LoginscreenState extends State<Loginscreen> {
             child: Padding(
               padding: EdgeInsets.only(top: 30 * pix),
               child: Text(
-                'Đăng nhập',
+                l10n.login, // Chuỗi đã dịch
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24 * pix,
@@ -111,69 +109,26 @@ class _LoginscreenState extends State<Loginscreen> {
     );
   }
 
-  // Avatar người học
   Widget _buildAvatar(double pix) {
     return Center(
       child: Container(
         width: 188 * pix,
         height: 188 * pix,
         padding: EdgeInsets.all(10 * pix),
-        child: Image.asset(AppImages.personlearn1), // Ảnh minh họa
+        child: Image.asset(AppImages.personlearn1),
       ),
     );
   }
 
-  // Trường nhập email
   Widget _buildEmailField(Size size, double pix) {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16 * pix),
           child: Text(
-            'Email',
-            style: TextStyle(
-              fontSize: 14 * pix,
-              fontFamily: 'BeVietnamPro',
-              color: Colors.black,
-            ),
-          ),
-        ),
-        Container(
-          width: size.width,
-          height: 56 * pix,
-          margin: EdgeInsets.symmetric(horizontal: 16 * pix),
-          padding: EdgeInsets.only(left: 16 * pix),
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(16 * pix),
-          ),
-          child: const TextField(
-            decoration: InputDecoration(
-              labelText: 'Nhập email của bạn',
-              labelStyle: TextStyle(
-                fontSize: 14,
-                fontFamily: 'BeVietnamPro',
-                color: Colors.grey,
-              ),
-              border: InputBorder.none,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  // Trường nhập mật khẩu
-  Widget _buildPasswordField(Size size, double pix) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16 * pix),
-          child: Text(
-            'Mật khẩu',
+            l10n.email, // Chuỗi đã dịch
             style: TextStyle(
               fontSize: 14 * pix,
               fontFamily: 'BeVietnamPro',
@@ -192,9 +147,51 @@ class _LoginscreenState extends State<Loginscreen> {
             borderRadius: BorderRadius.circular(16 * pix),
           ),
           child: TextField(
-            obscureText: _obscureText, // Ẩn mật khẩu
             decoration: InputDecoration(
-              labelText: 'Mật khẩu',
+              labelText: l10n.enterYourEmail, // Chuỗi đã dịch
+              labelStyle: const TextStyle(
+                fontSize: 14,
+                fontFamily: 'BeVietnamPro',
+                color: Colors.grey,
+              ),
+              border: InputBorder.none,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPasswordField(Size size, double pix) {
+    final l10n = AppLocalizations.of(context)!;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16 * pix),
+          child: Text(
+            l10n.password, // Chuỗi đã dịch
+            style: TextStyle(
+              fontSize: 14 * pix,
+              fontFamily: 'BeVietnamPro',
+              color: Colors.black,
+            ),
+          ),
+        ),
+        Container(
+          width: size.width,
+          height: 56 * pix,
+          margin: EdgeInsets.symmetric(horizontal: 16 * pix),
+          padding: EdgeInsets.only(left: 16 * pix),
+          decoration: BoxDecoration(
+            color: Colors.grey[200],
+            border: Border.all(color: Colors.grey),
+            borderRadius: BorderRadius.circular(16 * pix),
+          ),
+          child: TextField(
+            obscureText: _obscureText,
+            decoration: InputDecoration(
+              labelText: l10n.password, // Chuỗi đã dịch
               labelStyle: TextStyle(
                 fontSize: 14 * pix,
                 fontFamily: 'BeVietnamPro',
@@ -208,7 +205,7 @@ class _LoginscreenState extends State<Loginscreen> {
                 ),
                 onPressed: () {
                   setState(() {
-                    _obscureText = !_obscureText; // Chuyển đổi ẩn/hiện
+                    _obscureText = !_obscureText;
                   });
                 },
               ),
@@ -219,17 +216,17 @@ class _LoginscreenState extends State<Loginscreen> {
     );
   }
 
-  // Link "Quên mật khẩu"
   Widget _buildForgotPassword(Size size, double pix) {
+    final l10n = AppLocalizations.of(context)!;
     return InkWell(
-      onTap: () {}, // Chưa xử lý quên mật khẩu
+      onTap: () {},
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16 * pix),
         child: SizedBox(
           width: size.width,
           height: 20 * pix,
           child: Text(
-            'Quên mật khẩu?',
+            l10n.forgotPassword, // Chuỗi đã dịch
             style: TextStyle(
               fontSize: 14 * pix,
               fontFamily: 'BeVietnamPro',
@@ -243,13 +240,12 @@ class _LoginscreenState extends State<Loginscreen> {
     );
   }
 
-  // Nút đăng nhập
   Widget _buildLoginButton(Size size, double pix) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.all(16 * pix),
       child: InkWell(
         onTap: () {
-          // Chuyển sang HomeScreen sau khi đăng nhập
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => const Homescreen()),
@@ -259,12 +255,12 @@ class _LoginscreenState extends State<Loginscreen> {
           width: size.width,
           height: 56 * pix,
           decoration: BoxDecoration(
-            color: const Color(0xff5B7BFE), // Màu xanh nút
+            color: const Color(0xff5B7BFE),
             borderRadius: BorderRadius.circular(16 * pix),
           ),
           child: Center(
             child: Text(
-              'Đăng nhập',
+              l10n.login, // Chuỗi đã dịch
               style: TextStyle(
                 fontSize: 20 * pix,
                 fontFamily: 'BeVietnamPro',
@@ -278,15 +274,15 @@ class _LoginscreenState extends State<Loginscreen> {
     );
   }
 
-  // Dòng phân cách "Or"
   Widget _buildDivider(Size size, double pix) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16 * pix),
       child: SizedBox(
         width: size.width,
         height: 20 * pix,
         child: Text(
-          'Or',
+          l10n.or, // Chuỗi đã dịch
           style: TextStyle(
             fontSize: 14 * pix,
             fontFamily: 'BeVietnamPro',
@@ -298,8 +294,8 @@ class _LoginscreenState extends State<Loginscreen> {
     );
   }
 
-  // Link đăng ký
   Widget _buildSignupLink(Size size, double pix) {
+    final l10n = AppLocalizations.of(context)!;
     return SizedBox(
       width: size.width,
       height: 56 * pix,
@@ -307,7 +303,7 @@ class _LoginscreenState extends State<Loginscreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Bạn chưa có tài khoản?',
+            l10n.noAccount, // Chuỗi đã dịch
             style: TextStyle(
               fontSize: 14 * pix,
               fontFamily: 'BeVietnamPro',
@@ -316,14 +312,13 @@ class _LoginscreenState extends State<Loginscreen> {
           ),
           InkWell(
             onTap: () {
-              // Chuyển sang SignupScreen
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const Signupscreen()),
               );
             },
             child: Text(
-              ' Đăng ký',
+              l10n.signup, // Chuỗi đã dịch
               style: TextStyle(
                 fontSize: 14 * pix,
                 fontFamily: 'BeVietnamPro',

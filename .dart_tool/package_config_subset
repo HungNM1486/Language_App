@@ -90,6 +90,10 @@ http_parser
 2.12
 file:///C:/Users/HungN/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.0.2/
 file:///C:/Users/HungN/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.0.2/lib/
+intl
+3.0
+file:///C:/Users/HungN/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.19.0/
+file:///C:/Users/HungN/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.19.0/lib/
 leak_tracker
 3.2
 file:///C:/Users/HungN/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker-10.0.8/
@@ -122,6 +126,10 @@ mime
 3.2
 file:///C:/Users/HungN/AppData/Local/Pub/Cache/hosted/pub.dev/mime-1.0.6/
 file:///C:/Users/HungN/AppData/Local/Pub/Cache/hosted/pub.dev/mime-1.0.6/lib/
+nested
+2.12
+file:///C:/Users/HungN/AppData/Local/Pub/Cache/hosted/pub.dev/nested-1.0.0/
+file:///C:/Users/HungN/AppData/Local/Pub/Cache/hosted/pub.dev/nested-1.0.0/lib/
 path
 3.4
 file:///C:/Users/HungN/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.9.1/
@@ -158,6 +166,10 @@ plugin_platform_interface
 3.0
 file:///C:/Users/HungN/AppData/Local/Pub/Cache/hosted/pub.dev/plugin_platform_interface-2.1.8/
 file:///C:/Users/HungN/AppData/Local/Pub/Cache/hosted/pub.dev/plugin_platform_interface-2.1.8/lib/
+provider
+2.12
+file:///C:/Users/HungN/AppData/Local/Pub/Cache/hosted/pub.dev/provider-6.1.2/
+file:///C:/Users/HungN/AppData/Local/Pub/Cache/hosted/pub.dev/provider-6.1.2/lib/
 qr
 3.4
 file:///C:/Users/HungN/AppData/Local/Pub/Cache/hosted/pub.dev/qr-3.0.2/
@@ -262,6 +274,10 @@ flutter
 3.7
 file:///C:/flutter/packages/flutter/
 file:///C:/flutter/packages/flutter/lib/
+flutter_localizations
+3.7
+file:///C:/flutter/packages/flutter_localizations/
+file:///C:/flutter/packages/flutter_localizations/lib/
 flutter_test
 3.7
 file:///C:/flutter/packages/flutter_test/
