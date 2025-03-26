@@ -21,7 +21,8 @@ dependencies:
   image_picker: ^1.1.2
   shared_preferences: ^2.2.3
   flutter_local_notifications: ^17.2.2
-
+  fl_chart: ^0.68.0  # Package để vẽ biểu đồ
+  
 
 dev_dependencies:
   flutter_test:

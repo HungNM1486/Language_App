@@ -24,7 +24,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logout => 'Log out';
 
   @override
-  String get courses => 'Courses';
+  String get courses => 'courses';
 
   @override
   String get learningGoals => 'Learning Goals';
@@ -151,4 +151,154 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get updateNotificationsDesc => 'Receive notifications when a new version is available.';
+
+  @override
+  String get selectTheme => 'Select Theme';
+
+  @override
+  String get light => 'Light';
+
+  @override
+  String get dark => 'Dark';
+
+  @override
+  String get system => 'System';
+
+  @override
+  String get themeSaved => 'Theme settings saved';
+
+  @override
+  String get selectGoal => 'Select Learning Goal';
+
+  @override
+  String get basic => 'Basic';
+
+  @override
+  String get basicDesc => 'Learn basic skills, suitable for beginners.';
+
+  @override
+  String get advanced => 'Advanced';
+
+  @override
+  String get advancedDesc => 'Develop in-depth skills, for those with a foundation.';
+
+  @override
+  String get expert => 'Expert';
+
+  @override
+  String get expertDesc => 'Achieve advanced proficiency, ideal for mastery.';
+
+  @override
+  String get continueButton => 'Continue';
+
+  @override
+  String get goalTime => 'Goal Completion Time';
+
+  @override
+  String get selectGoalTime => 'Select Goal Completion Time';
+
+  @override
+  String get oneMonth => '1 Month';
+
+  @override
+  String get oneMonthDesc => 'Complete your goal in a short, intensive period.';
+
+  @override
+  String get threeMonths => '3 Months';
+
+  @override
+  String get threeMonthsDesc => 'A balanced pace to achieve your learning goal.';
+
+  @override
+  String get sixMonths => '6 Months';
+
+  @override
+  String get sixMonthsDesc => 'A longer period for thorough mastery.';
+
+  @override
+  String get goalTimeSaved => 'Goal completion time saved';
+
+  @override
+  String get studyTime => 'Study Time';
+
+  @override
+  String get selectStudyTime => 'Select Study Time';
+
+  @override
+  String get breakfast => 'During Breakfast';
+
+  @override
+  String get commuting => 'While Commuting';
+
+  @override
+  String get lunch => 'During Lunch';
+
+  @override
+  String get dinner => 'During Dinner';
+
+  @override
+  String get studyTimeSaved => 'Study time saved';
+
+  @override
+  String get goalCompletion => 'Goal Setup Complete';
+
+  @override
+  String get congratulations => 'Congratulations!';
+
+  @override
+  String get goalSetSuccess => 'You have successfully set your learning goal.';
+
+  @override
+  String get goalOverview => 'Goal Overview';
+
+  @override
+  String get goalLabel => 'Goal';
+
+  @override
+  String get timeLabel => 'Completion Time';
+
+  @override
+  String get studyTimeLabel => 'Study Time';
+
+  @override
+  String get finishButton => 'Finish';
+
+  @override
+  String get activity => 'Activity';
+
+  @override
+  String get activityOverview => 'Activity Overview';
+
+  @override
+  String get totalStudyTime => 'Total Study Time';
+
+  @override
+  String get totalCourses => 'Total Courses';
+
+  @override
+  String get community => 'Community';
+
+  @override
+  String get noPosts => 'No posts yet';
+
+  @override
+  String get createPost => 'Create Post';
+
+  @override
+  String get postTitle => 'Title';
+
+  @override
+  String get postContent => 'Content';
+
+  @override
+  String get submitPost => 'Submit';
+
+  @override
+  String get likes => 'Likes';
+
+  @override
+  String get comments => 'Comments';
+
+  @override
+  String get addComment => 'Add a comment';
 }

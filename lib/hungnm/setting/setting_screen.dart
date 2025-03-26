@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:language_app/hungnm/setting/language_settings_screen.dart';
 import 'package:language_app/hungnm/setting/profile_settings_screen.dart';
 import 'package:language_app/hungnm/setting/course_settings_screen.dart';
-import 'package:language_app/hungnm/setting/goal_settings_screen.dart';
+import 'package:language_app/hungnm/setting/goal/goal_settings_screen.dart';
 import 'package:language_app/hungnm/setting/theme_settings_screen.dart';
 import 'package:language_app/hungnm/setting/sound_settings_screen.dart';
 import 'package:language_app/hungnm/setting/notification_settings_screen.dart';

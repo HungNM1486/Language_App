@@ -1,7 +1,17 @@
-2025/03/24-09:36:59.475 9e4 Reusing MANIFEST C:\Users\HungN\AppData\Local\Temp\flutter_tools.f7893e8c\flutter_tools_chrome_device.f0db5339\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
-2025/03/24-09:36:59.476 9e4 Recovering log #7
-2025/03/24-09:36:59.477 9e4 Reusing old log C:\Users\HungN\AppData\Local\Temp\flutter_tools.f7893e8c\flutter_tools_chrome_device.f0db5339\Default\EdgeCoupons/coupons_data.db/000007.log 
-2025/03/24-09:36:59.478 9e4 Delete type=0 #4
-2025/03/24-09:36:59.580 df4 Level-0 table #11: started
-2025/03/24-09:36:59.585 df4 Level-0 table #11: 670660 bytes OK
-2025/03/24-09:36:59.587 df4 Delete type=0 #7
+2025/03/24-13:27:59.222 abc Reusing MANIFEST C:\Users\HungN\AppData\Local\Temp\flutter_tools.b365a1ba\flutter_tools_chrome_device.b3306cff\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
+2025/03/24-13:27:59.223 abc Recovering log #16
+2025/03/24-13:27:59.224 abc Reusing old log C:\Users\HungN\AppData\Local\Temp\flutter_tools.b365a1ba\flutter_tools_chrome_device.b3306cff\Default\EdgeCoupons/coupons_data.db/000016.log 
+2025/03/24-13:27:59.225 abc Delete type=0 #10
+2025/03/24-13:27:59.225 abc Delete type=0 #13
+2025/03/24-13:27:59.300 18c4 Level-0 table #20: started
+2025/03/24-13:27:59.305 18c4 Level-0 table #20: 670615 bytes OK
+2025/03/24-13:27:59.308 18c4 Delete type=0 #16
+2025/03/24-13:27:59.309 18c4 Compacting 4@0 + 1@1 files
+2025/03/24-13:27:59.314 18c4 Generated table #21@0: 4 keys, 670615 bytes
+2025/03/24-13:27:59.314 18c4 Compacted 4@0 + 1@1 files => 670615 bytes
+2025/03/24-13:27:59.322 18c4 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/03/24-13:27:59.323 18c4 Delete type=2 #8
+2025/03/24-13:27:59.323 18c4 Delete type=2 #11
+2025/03/24-13:27:59.323 18c4 Delete type=2 #14
+2025/03/24-13:27:59.323 18c4 Delete type=2 #17
+2025/03/24-13:27:59.324 18c4 Delete type=2 #20

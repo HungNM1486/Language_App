@@ -24,13 +24,13 @@ class AppLocalizationsVi extends AppLocalizations {
   String get logout => 'Đăng xuất';
 
   @override
-  String get courses => 'Khóa học';
+  String get courses => 'khóa học';
 
   @override
   String get learningGoals => 'Mục tiêu học tập';
 
   @override
-  String get theme => 'Chủ đề';
+  String get theme => 'Giao diện';
 
   @override
   String get sound => 'Âm thanh';
@@ -151,4 +151,154 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get updateNotificationsDesc => 'Nhận thông báo khi có phiên bản mới.';
+
+  @override
+  String get selectTheme => 'Chọn giao diện';
+
+  @override
+  String get light => 'Sáng';
+
+  @override
+  String get dark => 'Tối';
+
+  @override
+  String get system => 'Theo hệ thống';
+
+  @override
+  String get themeSaved => 'Đã lưu cài đặt giao diện';
+
+  @override
+  String get selectGoal => 'Chọn mục tiêu học tập';
+
+  @override
+  String get basic => 'Cơ bản';
+
+  @override
+  String get basicDesc => 'Học các kỹ năng cơ bản, phù hợp cho người mới bắt đầu.';
+
+  @override
+  String get advanced => 'Nâng cao';
+
+  @override
+  String get advancedDesc => 'Phát triển kỹ năng chuyên sâu, dành cho người đã có nền tảng.';
+
+  @override
+  String get expert => 'Chuyên gia';
+
+  @override
+  String get expertDesc => 'Đạt trình độ cao cấp, phù hợp với người muốn thành thạo.';
+
+  @override
+  String get continueButton => 'Tiếp tục';
+
+  @override
+  String get goalTime => 'Thời gian hoàn thành mục tiêu';
+
+  @override
+  String get selectGoalTime => 'Chọn thời gian hoàn thành mục tiêu';
+
+  @override
+  String get oneMonth => '1 tháng';
+
+  @override
+  String get oneMonthDesc => 'Hoàn thành mục tiêu trong thời gian ngắn và tập trung.';
+
+  @override
+  String get threeMonths => '3 tháng';
+
+  @override
+  String get threeMonthsDesc => 'Tiến độ cân bằng để đạt được mục tiêu học tập.';
+
+  @override
+  String get sixMonths => '6 tháng';
+
+  @override
+  String get sixMonthsDesc => 'Thời gian dài hơn để thành thạo hoàn toàn.';
+
+  @override
+  String get goalTimeSaved => 'Đã lưu thời gian hoàn thành mục tiêu';
+
+  @override
+  String get studyTime => 'Thời gian học';
+
+  @override
+  String get selectStudyTime => 'Chọn thời gian học';
+
+  @override
+  String get breakfast => 'Khi ăn sáng';
+
+  @override
+  String get commuting => 'Khi di chuyển';
+
+  @override
+  String get lunch => 'Khi ăn trưa';
+
+  @override
+  String get dinner => 'Khi ăn tối';
+
+  @override
+  String get studyTimeSaved => 'Đã lưu thời gian học';
+
+  @override
+  String get goalCompletion => 'Hoàn thành đặt mục tiêu';
+
+  @override
+  String get congratulations => 'Chúc mừng!';
+
+  @override
+  String get goalSetSuccess => 'Bạn đã đặt mục tiêu học tập thành công.';
+
+  @override
+  String get goalOverview => 'Tổng quan mục tiêu';
+
+  @override
+  String get goalLabel => 'Mục tiêu';
+
+  @override
+  String get timeLabel => 'Thời gian hoàn thành';
+
+  @override
+  String get studyTimeLabel => 'Thời gian học';
+
+  @override
+  String get finishButton => 'Hoàn tất';
+
+  @override
+  String get activity => 'Hoạt động';
+
+  @override
+  String get activityOverview => 'Tổng quan hoạt động';
+
+  @override
+  String get totalStudyTime => 'Tổng thời gian học';
+
+  @override
+  String get totalCourses => 'Tổng số khóa học';
+
+  @override
+  String get community => 'Cộng đồng học tập';
+
+  @override
+  String get noPosts => 'Chưa có bài viết nào';
+
+  @override
+  String get createPost => 'Viết bài';
+
+  @override
+  String get postTitle => 'Tiêu đề';
+
+  @override
+  String get postContent => 'Nội dung';
+
+  @override
+  String get submitPost => 'Đăng bài';
+
+  @override
+  String get likes => 'Lượt thích';
+
+  @override
+  String get comments => 'Bình luận';
+
+  @override
+  String get addComment => 'Thêm bình luận';
 }

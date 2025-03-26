@@ -4,6 +4,7 @@ import 'package:language_app/phunv/widget/topic_widget.dart'; // Widget hiển t
 import 'package:language_app/models/topic_model.dart'; // Model dữ liệu chủ đề
 import 'package:language_app/res/imagesLA/app_images.dart'; // Danh sách ảnh
 import 'package:language_app/widget/bottom_bar.dart'; // Thanh điều hướng dưới
+import 'package:language_app/hungnm/community/community_screen.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -337,7 +338,13 @@ class _HomescreenState extends State<Homescreen> {
                     SizedBox(height: 10 * pix),
                     Center(
                       child: InkWell(
-                        onTap: () {}, // Chưa có hành động cụ thể
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const CommunityScreen()),
+                          );
+                        },
                         child: Container(
                           height: 170 * pix,
                           width: 310 * pix,

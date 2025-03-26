@@ -128,7 +128,7 @@ abstract class AppLocalizations {
   /// No description provided for @courses.
   ///
   /// In en, this message translates to:
-  /// **'Courses'**
+  /// **'courses'**
   String get courses;
 
   /// No description provided for @learningGoals.
@@ -382,6 +382,306 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Receive notifications when a new version is available.'**
   String get updateNotificationsDesc;
+
+  /// No description provided for @selectTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Theme'**
+  String get selectTheme;
+
+  /// No description provided for @light.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get light;
+
+  /// No description provided for @dark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get dark;
+
+  /// No description provided for @system.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get system;
+
+  /// No description provided for @themeSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme settings saved'**
+  String get themeSaved;
+
+  /// No description provided for @selectGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Learning Goal'**
+  String get selectGoal;
+
+  /// No description provided for @basic.
+  ///
+  /// In en, this message translates to:
+  /// **'Basic'**
+  String get basic;
+
+  /// No description provided for @basicDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn basic skills, suitable for beginners.'**
+  String get basicDesc;
+
+  /// No description provided for @advanced.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced'**
+  String get advanced;
+
+  /// No description provided for @advancedDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Develop in-depth skills, for those with a foundation.'**
+  String get advancedDesc;
+
+  /// No description provided for @expert.
+  ///
+  /// In en, this message translates to:
+  /// **'Expert'**
+  String get expert;
+
+  /// No description provided for @expertDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Achieve advanced proficiency, ideal for mastery.'**
+  String get expertDesc;
+
+  /// No description provided for @continueButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueButton;
+
+  /// No description provided for @goalTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal Completion Time'**
+  String get goalTime;
+
+  /// No description provided for @selectGoalTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Goal Completion Time'**
+  String get selectGoalTime;
+
+  /// No description provided for @oneMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'1 Month'**
+  String get oneMonth;
+
+  /// No description provided for @oneMonthDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete your goal in a short, intensive period.'**
+  String get oneMonthDesc;
+
+  /// No description provided for @threeMonths.
+  ///
+  /// In en, this message translates to:
+  /// **'3 Months'**
+  String get threeMonths;
+
+  /// No description provided for @threeMonthsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'A balanced pace to achieve your learning goal.'**
+  String get threeMonthsDesc;
+
+  /// No description provided for @sixMonths.
+  ///
+  /// In en, this message translates to:
+  /// **'6 Months'**
+  String get sixMonths;
+
+  /// No description provided for @sixMonthsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'A longer period for thorough mastery.'**
+  String get sixMonthsDesc;
+
+  /// No description provided for @goalTimeSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal completion time saved'**
+  String get goalTimeSaved;
+
+  /// No description provided for @studyTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Study Time'**
+  String get studyTime;
+
+  /// No description provided for @selectStudyTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Study Time'**
+  String get selectStudyTime;
+
+  /// No description provided for @breakfast.
+  ///
+  /// In en, this message translates to:
+  /// **'During Breakfast'**
+  String get breakfast;
+
+  /// No description provided for @commuting.
+  ///
+  /// In en, this message translates to:
+  /// **'While Commuting'**
+  String get commuting;
+
+  /// No description provided for @lunch.
+  ///
+  /// In en, this message translates to:
+  /// **'During Lunch'**
+  String get lunch;
+
+  /// No description provided for @dinner.
+  ///
+  /// In en, this message translates to:
+  /// **'During Dinner'**
+  String get dinner;
+
+  /// No description provided for @studyTimeSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Study time saved'**
+  String get studyTimeSaved;
+
+  /// No description provided for @goalCompletion.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal Setup Complete'**
+  String get goalCompletion;
+
+  /// No description provided for @congratulations.
+  ///
+  /// In en, this message translates to:
+  /// **'Congratulations!'**
+  String get congratulations;
+
+  /// No description provided for @goalSetSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'You have successfully set your learning goal.'**
+  String get goalSetSuccess;
+
+  /// No description provided for @goalOverview.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal Overview'**
+  String get goalOverview;
+
+  /// No description provided for @goalLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal'**
+  String get goalLabel;
+
+  /// No description provided for @timeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Completion Time'**
+  String get timeLabel;
+
+  /// No description provided for @studyTimeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Study Time'**
+  String get studyTimeLabel;
+
+  /// No description provided for @finishButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish'**
+  String get finishButton;
+
+  /// No description provided for @activity.
+  ///
+  /// In en, this message translates to:
+  /// **'Activity'**
+  String get activity;
+
+  /// No description provided for @activityOverview.
+  ///
+  /// In en, this message translates to:
+  /// **'Activity Overview'**
+  String get activityOverview;
+
+  /// No description provided for @totalStudyTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Study Time'**
+  String get totalStudyTime;
+
+  /// No description provided for @totalCourses.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Courses'**
+  String get totalCourses;
+
+  /// No description provided for @community.
+  ///
+  /// In en, this message translates to:
+  /// **'Community'**
+  String get community;
+
+  /// No description provided for @noPosts.
+  ///
+  /// In en, this message translates to:
+  /// **'No posts yet'**
+  String get noPosts;
+
+  /// No description provided for @createPost.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Post'**
+  String get createPost;
+
+  /// No description provided for @postTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get postTitle;
+
+  /// No description provided for @postContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Content'**
+  String get postContent;
+
+  /// No description provided for @submitPost.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get submitPost;
+
+  /// No description provided for @likes.
+  ///
+  /// In en, this message translates to:
+  /// **'Likes'**
+  String get likes;
+
+  /// No description provided for @comments.
+  ///
+  /// In en, this message translates to:
+  /// **'Comments'**
+  String get comments;
+
+  /// No description provided for @addComment.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a comment'**
+  String get addComment;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

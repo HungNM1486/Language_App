@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:language_app/widget/top_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:fl_chart/fl_chart.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ActivityScreen extends StatefulWidget {
   const ActivityScreen({super.key});
@@ -9,104 +11,314 @@ class ActivityScreen extends StatefulWidget {
 }
 
 class _ActivityScreenState extends State<ActivityScreen> {
-  int _selectedTabIndex = 0; // Trạng thái lựa chọn (0: Ngày, 1: Tháng, 2: Năm)
+  String _selectedTimeFilter = 'Ngày';
+  // Dữ liệu mẫu (có thể thay bằng dữ liệu thực tế)
+  Map<String, List<double>> studyTimeData = {
+    'Ngày': [2.5, 1.8, 3.0, 2.0, 1.5, 2.8, 2.2], // 7 ngày (giờ)
+    'Tuần': [12.5, 10.8, 14.0, 11.5], // 4 tuần (giờ)
+    'Tháng': [50.0, 45.5, 55.0], // 3 tháng (giờ)
+  };
+  int totalCourses = 5; // Số khóa học mẫu
+
+  @override
+  void initState() {
+    super.initState();
+    _loadTimeFilter();
+  }
+
+  Future<void> _loadTimeFilter() async {
+    final prefs = await SharedPreferences.getInstance();
+    final savedFilter = prefs.getString('activity_time_filter') ?? 'Ngày';
+    setState(() {
+      _selectedTimeFilter = savedFilter;
+    });
+  }
+
+  Future<void> _saveTimeFilter(String filter) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('activity_time_filter', filter);
+    setState(() {
+      _selectedTimeFilter = filter;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final pix = (size.width / 375).clamp(0.8, 1.2); // Responsive ratio với giới hạn
+    final pix = MediaQuery.of(context).size.width / 375;
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      body: Stack(
-        children: [
-          // Nội dung chính (có thể cuộn, nằm trong SafeArea)
-          SafeArea(
-            top: false, // Không áp dụng padding trên cùng cho nội dung
-            child: SingleChildScrollView(
-              child: Column(
+      appBar: AppBar(
+        title: Text(l10n.activity),
+        backgroundColor: const Color(0xff5B7BFE),
+        foregroundColor: Colors.white,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16 * pix),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                l10n.activityOverview,
+                style: TextStyle(
+                  fontSize: 20 * pix,
+                  fontFamily: 'BeVietnamPro',
+                  fontWeight: FontWeight.bold,
+                  color: const Color(0xff5B7BFE),
+                ),
+              ),
+              SizedBox(height: 16 * pix),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Khoảng trống để tránh nội dung bị che bởi TopBar
-                  SizedBox(height: 100 * pix), // Chiều cao của TopBar
-                  // Thanh nằm ngang với 3 lựa chọn: Ngày, Tháng, Năm
-                  Container(
-                    padding: EdgeInsets.only(top: 20 * pix, bottom: 10 * pix),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _buildTabButton("Ngày", 0, pix),
-                        SizedBox(width: 10 * pix),
-                        _buildTabButton("Tháng", 1, pix),
-                        SizedBox(width: 10 * pix),
-                        _buildTabButton("Năm", 2, pix),
-                      ],
+                  Text(
+                    l10n.studyTime,
+                    style: TextStyle(
+                      fontSize: 16 * pix,
+                      fontFamily: 'BeVietnamPro',
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                  // Nội dung bên dưới
-                  SizedBox(
-                    height: 500 * pix, // Placeholder cho nội dung sau này
-                    child: Center(
-                      child: Text(
-                        'Nội dung cho ${_selectedTabIndex == 0 ? "Ngày" : _selectedTabIndex == 1 ? "Tháng" : "Năm"}',
-                        style: TextStyle(
-                          fontSize: 16 * pix,
-                          fontFamily: 'BeVietnamPro',
-                        ),
-                      ),
+                  DropdownButton<String>(
+                    value: _selectedTimeFilter,
+                    icon: const Icon(Icons.arrow_drop_down),
+                    iconSize: 24 * pix,
+                    elevation: 16,
+                    style: TextStyle(
+                      fontSize: 14 * pix,
+                      fontFamily: 'BeVietnamPro',
+                      color: Colors.black,
                     ),
+                    underline: const SizedBox(),
+                    onChanged: (String? newValue) {
+                      if (newValue != null) {
+                        _saveTimeFilter(newValue);
+                      }
+                    },
+                    items: <String>['Ngày', 'Tuần', 'Tháng']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
                   ),
                 ],
               ),
+              SizedBox(height: 16 * pix),
+              SizedBox(
+                height: 300 * pix,
+                child: BarChart(
+                  BarChartData(
+                    alignment: BarChartAlignment.spaceAround,
+                    maxY: _getMaxY(),
+                    barTouchData: BarTouchData(
+                      enabled: true,
+                      touchTooltipData: BarTouchTooltipData(
+                        tooltipPadding: EdgeInsets.all(8 * pix),
+                        tooltipMargin: 8 * pix,
+                        getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                          final hours = rod.toY.floor();
+                          final minutes = ((rod.toY - hours) * 60).round();
+                          return BarTooltipItem(
+                            '$hours h $minutes m',
+                            TextStyle(
+                              color: Colors.white,
+                              fontSize: 12 * pix,
+                              fontFamily: 'BeVietnamPro',
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    titlesData: FlTitlesData(
+                      show: true,
+                      bottomTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                          showTitles: true,
+                          getTitlesWidget: (value, meta) =>
+                              _bottomTitles(value, pix),
+                          reservedSize: 30 * pix,
+                        ),
+                      ),
+                      leftTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                          showTitles: true,
+                          getTitlesWidget: (value, meta) => Text(
+                            '${value.toInt()}h',
+                            style: TextStyle(
+                              fontSize: 12 * pix,
+                              fontFamily: 'BeVietnamPro',
+                              color: Colors.grey,
+                            ),
+                          ),
+                          reservedSize: 40 * pix,
+                          interval: _getYInterval(),
+                        ),
+                      ),
+                      topTitles: const AxisTitles(
+                          sideTitles: SideTitles(showTitles: false)),
+                      rightTitles: const AxisTitles(
+                          sideTitles: SideTitles(showTitles: false)),
+                    ),
+                    gridData: const FlGridData(show: true),
+                    borderData: FlBorderData(show: false),
+                    barGroups: _buildBarGroups(pix),
+                  ),
+                ),
+              ),
+              SizedBox(height: 24 * pix),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildStatCard(
+                    pix: pix,
+                    icon: Icons.timer,
+                    label: l10n.totalStudyTime,
+                    value: _formatTotalStudyTime(),
+                  ),
+                  _buildStatCard(
+                    pix: pix,
+                    icon: Icons.book,
+                    label: l10n.totalCourses,
+                    value: '$totalCourses ${l10n.courses}',
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // Tạo khung thống kê
+  Widget _buildStatCard({
+    required double pix,
+    required IconData icon,
+    required String label,
+    required String value,
+  }) {
+    return Container(
+      width: 150 * pix,
+      height: 200 * pix,
+      padding: EdgeInsets.all(16 * pix),
+      decoration: BoxDecoration(
+        color: Colors.grey[100],
+        borderRadius: BorderRadius.circular(16 * pix),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircleAvatar(
+            radius: 30 * pix,
+            backgroundColor: const Color(0xff5B7BFE),
+            child: Icon(
+              icon,
+              size: 30 * pix,
+              color: Colors.white,
             ),
           ),
-          // TopBar cố định ở trên cùng, không nằm trong SafeArea
-          const Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: TopBar(
-              title: "Hoạt động",
-              isBack: true,
+          SizedBox(height: 12 * pix),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 14 * pix,
+              fontFamily: 'BeVietnamPro',
+              color: Colors.grey[600],
             ),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 8 * pix),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 18 * pix,
+              fontFamily: 'BeVietnamPro',
+              fontWeight: FontWeight.bold,
+              color: const Color(0xff5B7BFE),
+            ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
     );
   }
 
-  // Widget cho mỗi nút tab (Ngày/Tháng/Năm)
-  Widget _buildTabButton(String title, int index, double pix) {
-    bool isSelected = _selectedTabIndex == index;
+  // Định dạng tổng thời gian học (giờ:phút)
+  String _formatTotalStudyTime() {
+    final totalHours = _calculateTotalTime();
+    final hours = totalHours.floor();
+    final minutes = ((totalHours - hours) * 60).round();
+    return '$hours h $minutes m';
+  }
 
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _selectedTabIndex = index; // Cập nhật lựa chọn
-        });
-      },
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20 * pix, vertical: 8 * pix),
-        decoration: BoxDecoration(
-          color: isSelected ? const Color(0xff5B7BFE) : Colors.grey[200],
-          borderRadius: BorderRadius.circular(20 * pix),
-          boxShadow: [
-            if (isSelected)
-              BoxShadow(
-                color: Colors.black..withAlpha((0.2 * 255).toInt()),
-                blurRadius: 4,
-                offset: const Offset(0, 2),
-              ),
-          ],
-        ),
-        child: Text(
-          title,
-          style: TextStyle(
-            fontSize: 14 * pix,
-            fontFamily: 'BeVietnamPro',
-            fontWeight: FontWeight.w500,
-            color: isSelected ? Colors.white : Colors.black,
+  // Tính tổng thời gian học
+  double _calculateTotalTime() {
+    return studyTimeData[_selectedTimeFilter]!.reduce((a, b) => a + b);
+  }
+
+  // Tạo các cột biểu đồ
+  List<BarChartGroupData> _buildBarGroups(double pix) {
+    final data = studyTimeData[_selectedTimeFilter]!;
+    return List.generate(data.length, (index) {
+      return BarChartGroupData(
+        x: index,
+        barRods: [
+          BarChartRodData(
+            toY: data[index],
+            color: const Color(0xff5B7BFE),
+            width: 20 * pix,
+            borderRadius: BorderRadius.circular(4),
           ),
+        ],
+      );
+    });
+  }
+
+  // Tạo tiêu đề trục X
+  Widget _bottomTitles(double value, double pix) {
+    final index = value.toInt();
+    final data = studyTimeData[_selectedTimeFilter]!;
+    if (index >= data.length) return const SizedBox();
+
+    String title;
+    switch (_selectedTimeFilter) {
+      case 'Ngày':
+        title = 'D${index + 1}';
+        break;
+      case 'Tuần':
+        title = 'W${index + 1}';
+        break;
+      case 'Tháng':
+        title = 'M${index + 1}';
+        break;
+      default:
+        title = '';
+    }
+    return Padding(
+      padding: EdgeInsets.only(top: 8 * pix),
+      child: Text(
+        title,
+        style: TextStyle(
+          fontSize: 12 * pix,
+          fontFamily: 'BeVietnamPro',
+          color: Colors.grey,
         ),
       ),
     );
+  }
+
+  // Tính giá trị tối đa trục Y
+  double _getMaxY() {
+    final data = studyTimeData[_selectedTimeFilter]!;
+    return (data.reduce((a, b) => a > b ? a : b) * 1.2).ceilToDouble();
+  }
+
+  // Tính khoảng cách trục Y
+  double _getYInterval() {
+    final maxY = _getMaxY();
+    return (maxY / 5).ceilToDouble();
   }
 }
