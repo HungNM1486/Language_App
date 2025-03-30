@@ -1,3 +1,5 @@
+.dart_tool/
+
 # Flutter/Dart/Pub related
 .pub/
 packages/

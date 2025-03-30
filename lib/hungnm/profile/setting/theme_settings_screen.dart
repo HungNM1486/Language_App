@@ -60,7 +60,6 @@ class _ThemeSettingsScreenState extends State<ThemeSettingsScreen> {
       case ThemeMode.system:
         return 'system';
       case ThemeMode.light:
-      default:
         return 'light';
     }
   }

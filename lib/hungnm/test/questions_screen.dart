@@ -50,7 +50,19 @@ class QuestionsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildWeekOption(BuildContext context, {required String week, required String description, required String? score, required double pix}) {
+  Widget _buildWeekOption(
+    BuildContext context, {
+    required String week,
+    required String description,
+    required String? score,
+    required double pix,
+  }) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final cardColor = isDarkMode ? const Color(0xFF1E1E2F) : Colors.white;
+    final textColor = isDarkMode ? Colors.white : const Color(0xFF1C2526);
+    final accentColor =
+        score != null ? const Color(0xFF10B981) : const Color(0xFFD97706);
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -60,51 +72,85 @@ class QuestionsScreen extends StatelessWidget {
           ),
         );
       },
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeInOut,
         padding: EdgeInsets.all(16 * pix),
+        margin: EdgeInsets.symmetric(vertical: 8 * pix),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: cardColor,
           borderRadius: BorderRadius.circular(12 * pix),
+          border: Border.all(
+            color: isDarkMode ? Colors.grey[800]! : const Color(0xFFE5E7EB),
+            width: 1,
+          ),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: const Offset(0, 3),
+              color: Colors.black.withOpacity(isDarkMode ? 0.3 : 0.05),
+              spreadRadius: 1,
+              blurRadius: 6,
+              offset: const Offset(0, 2),
             ),
           ],
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  week,
-                  style: TextStyle(
-                    fontSize: 18 * pix,
-                    fontFamily: 'BeVietnamPro',
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                SizedBox(height: 4 * pix),
-                Text(
-                  description,
-                  style: TextStyle(
-                    fontSize: 14 * pix,
-                    fontFamily: 'BeVietnamPro',
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
+            // Icon
+            Container(
+              padding: EdgeInsets.all(10 * pix),
+              decoration: BoxDecoration(
+                color: accentColor.withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                score != null ? Icons.check_circle : Icons.pending,
+                size: 24 * pix,
+                color: accentColor,
+              ),
             ),
-            Text(
-              score ?? 'Chưa làm bài',
-              style: TextStyle(
-                fontSize: 16 * pix,
-                fontFamily: 'BeVietnamPro',
-                color: score != null ? Colors.green : Colors.red,
+            SizedBox(width: 16 * pix),
+            // Nội dung chính
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    week,
+                    style: TextStyle(
+                      fontSize: 18 * pix,
+                      fontFamily: 'BeVietnamPro',
+                      fontWeight: FontWeight.w600,
+                      color: textColor,
+                    ),
+                  ),
+                  SizedBox(height: 4 * pix),
+                  Text(
+                    description,
+                    style: TextStyle(
+                      fontSize: 14 * pix,
+                      fontFamily: 'BeVietnamPro',
+                      color: isDarkMode ? Colors.grey[400] : Colors.grey[600],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // Điểm hoặc trạng thái
+            Container(
+              padding:
+                  EdgeInsets.symmetric(horizontal: 12 * pix, vertical: 6 * pix),
+              decoration: BoxDecoration(
+                color: accentColor.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(16 * pix),
+              ),
+              child: Text(
+                score ?? 'Chưa làm',
+                style: TextStyle(
+                  fontSize: 14 * pix,
+                  fontFamily: 'BeVietnamPro',
+                  fontWeight: FontWeight.w500,
+                  color: accentColor,
+                ),
               ),
             ),
           ],
@@ -130,8 +176,8 @@ class _QuizScreenState extends State<QuizScreen> {
   final List<Map<String, dynamic>> questions = List.generate(
     10,
     (index) => {
-      'question': index % 2 == 0 
-          ? "What does '${_getRandomWord()}' mean?" 
+      'question': index % 2 == 0
+          ? "What does '${_getRandomWord()}' mean?"
           : "Is this sentence correct? '${_getExampleSentence()}'",
       'options': _generateOptions(index),
       'correct': index % 4, // Chọn đáp án đúng ngẫu nhiên (0-3)
@@ -140,7 +186,13 @@ class _QuizScreenState extends State<QuizScreen> {
   );
 
   static String _getRandomWord() {
-    final words = ['Diligent', 'Eloquent', 'Pragmatic', 'Resilient', 'Ephemeral'];
+    final words = [
+      'Diligent',
+      'Eloquent',
+      'Pragmatic',
+      'Resilient',
+      'Ephemeral'
+    ];
     return words[(DateTime.now().millisecondsSinceEpoch % words.length)];
   }
 
@@ -151,7 +203,8 @@ class _QuizScreenState extends State<QuizScreen> {
       'He don\'t likes coffee.',
       'They are playing football now.'
     ];
-    return sentences[(DateTime.now().millisecondsSinceEpoch % sentences.length)];
+    return sentences[
+        (DateTime.now().millisecondsSinceEpoch % sentences.length)];
   }
 
   static List<String> _generateOptions(int index) {
@@ -248,13 +301,13 @@ class _QuizScreenState extends State<QuizScreen> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          color: answers[index] != null 
+                          color: answers[index] != null
                               ? Colors.green[answers[index]! ? 400 : 300]
                               : Colors.grey[200],
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
-                            color: currentQuestion == index 
-                                ? Colors.blue 
+                            color: currentQuestion == index
+                                ? Colors.blue
                                 : Colors.transparent,
                             width: 2,
                           ),
@@ -264,8 +317,8 @@ class _QuizScreenState extends State<QuizScreen> {
                             '${index + 1}',
                             style: TextStyle(
                               fontSize: 16,
-                              color: answers[index] != null 
-                                  ? Colors.white 
+                              color: answers[index] != null
+                                  ? Colors.white
                                   : Colors.black,
                               fontWeight: FontWeight.bold,
                             ),
@@ -283,7 +336,8 @@ class _QuizScreenState extends State<QuizScreen> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
                 ),
                 child: const Text(
                   'Close',
@@ -302,10 +356,7 @@ class _QuizScreenState extends State<QuizScreen> {
       context,
       MaterialPageRoute(
         builder: (context) => SummaryScreen(
-          week: widget.week, 
-          answers: answers, 
-          questions: questions
-        ),
+            week: widget.week, answers: answers, questions: questions),
       ),
     );
   }
@@ -316,7 +367,8 @@ class _QuizScreenState extends State<QuizScreen> {
         context: context,
         builder: (context) => AlertDialog(
           title: const Text('Exit Quiz?'),
-          content: const Text('Your progress will not be saved if you exit now.'),
+          content:
+              const Text('Your progress will not be saved if you exit now.'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
@@ -415,7 +467,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 ],
               ),
               const SizedBox(height: 24),
-              
+
               // Question card
               Expanded(
                 child: SingleChildScrollView(
@@ -437,14 +489,14 @@ class _QuizScreenState extends State<QuizScreen> {
                             ),
                           ),
                           const SizedBox(height: 24),
-                          
+
                           // Options
                           ...current['options'].asMap().entries.map((entry) {
                             int idx = entry.key;
                             String option = entry.value;
                             bool isSelected = answers[currentQuestion] != null;
                             bool isCorrect = idx == current['correct'];
-                            
+
                             return Padding(
                               padding: const EdgeInsets.only(bottom: 12),
                               child: InkWell(
@@ -458,15 +510,15 @@ class _QuizScreenState extends State<QuizScreen> {
                                   padding: const EdgeInsets.all(16),
                                   decoration: BoxDecoration(
                                     color: isSelected
-                                        ? (isCorrect 
-                                            ? Colors.green[50] 
+                                        ? (isCorrect
+                                            ? Colors.green[50]
                                             : Colors.red[50])
                                         : Colors.grey[50],
                                     borderRadius: BorderRadius.circular(12),
                                     border: Border.all(
                                       color: isSelected
-                                          ? (isCorrect 
-                                              ? Colors.green 
+                                          ? (isCorrect
+                                              ? Colors.green
                                               : Colors.red)
                                           : Colors.grey[300]!,
                                       width: 1.5,
@@ -476,13 +528,13 @@ class _QuizScreenState extends State<QuizScreen> {
                                     children: [
                                       Icon(
                                         isSelected
-                                            ? (isCorrect 
-                                                ? Icons.check_circle 
+                                            ? (isCorrect
+                                                ? Icons.check_circle
                                                 : Icons.cancel)
                                             : Icons.radio_button_unchecked,
                                         color: isSelected
-                                            ? (isCorrect 
-                                                ? Colors.green 
+                                            ? (isCorrect
+                                                ? Colors.green
                                                 : Colors.red)
                                             : Colors.grey,
                                       ),
@@ -493,8 +545,8 @@ class _QuizScreenState extends State<QuizScreen> {
                                           style: TextStyle(
                                             fontSize: 16,
                                             color: isSelected
-                                                ? (isCorrect 
-                                                    ? Colors.green[800] 
+                                                ? (isCorrect
+                                                    ? Colors.green[800]
                                                     : Colors.red[800])
                                                 : Colors.black87,
                                           ),
@@ -506,7 +558,7 @@ class _QuizScreenState extends State<QuizScreen> {
                               ),
                             );
                           }).toList(),
-                          
+
                           // Explanation (shown after answering)
                           if (answers[currentQuestion] != null) ...[
                             const SizedBox(height: 20),
@@ -541,7 +593,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   ),
                 ),
               ),
-              
+
               // Navigation buttons
               Padding(
                 padding: const EdgeInsets.only(top: 20),
@@ -549,8 +601,8 @@ class _QuizScreenState extends State<QuizScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
-                      onPressed: currentQuestion > 0 
-                          ? () => setState(() => currentQuestion--) 
+                      onPressed: currentQuestion > 0
+                          ? () => setState(() => currentQuestion--)
                           : null,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
@@ -559,7 +611,8 @@ class _QuizScreenState extends State<QuizScreen> {
                           borderRadius: BorderRadius.circular(20),
                           side: BorderSide(color: Colors.blue[800]!),
                         ),
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 12),
                       ),
                       child: const Row(
                         children: [
@@ -569,7 +622,6 @@ class _QuizScreenState extends State<QuizScreen> {
                         ],
                       ),
                     ),
-                    
                     ElevatedButton(
                       onPressed: currentQuestion < questions.length - 1
                           ? () => setState(() => currentQuestion++)
@@ -580,13 +632,14 @@ class _QuizScreenState extends State<QuizScreen> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 12),
                       ),
                       child: Row(
                         children: [
                           Text(
-                            currentQuestion < questions.length - 1 
-                                ? 'Next' 
+                            currentQuestion < questions.length - 1
+                                ? 'Next'
                                 : 'Submit',
                           ),
                           if (currentQuestion < questions.length - 1) ...[
@@ -613,18 +666,18 @@ class SummaryScreen extends StatelessWidget {
   final List<bool?> answers;
   final List<Map<String, dynamic>> questions;
 
-  const SummaryScreen({
-    super.key, 
-    required this.week, 
-    required this.answers, 
-    required this.questions
-  });
+  const SummaryScreen(
+      {super.key,
+      required this.week,
+      required this.answers,
+      required this.questions});
 
   @override
   Widget build(BuildContext context) {
     final correctCount = answers.where((a) => a == true).length;
     final scorePercentage = (correctCount / questions.length * 100).round();
-    final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+    final isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
 
     return Scaffold(
       appBar: AppBar(
@@ -661,8 +714,8 @@ class SummaryScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      scorePercentage >= 70 
-                          ? 'Excellent Work!' 
+                      scorePercentage >= 70
+                          ? 'Excellent Work!'
                           : 'Keep Practicing!',
                       style: const TextStyle(
                         fontSize: 22,
@@ -681,24 +734,12 @@ class SummaryScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
+                        _buildScoreCircle(context, 'Score', '$scorePercentage%',
+                            _getScoreColor(scorePercentage)),
                         _buildScoreCircle(
-                          context, 
-                          'Score', 
-                          '$scorePercentage%', 
-                          _getScoreColor(scorePercentage)
-                        ),
-                        _buildScoreCircle(
-                          context, 
-                          'Correct', 
-                          '$correctCount', 
-                          Colors.green
-                        ),
-                        _buildScoreCircle(
-                          context, 
-                          'Incorrect', 
-                          '${questions.length - correctCount}', 
-                          Colors.red
-                        ),
+                            context, 'Correct', '$correctCount', Colors.green),
+                        _buildScoreCircle(context, 'Incorrect',
+                            '${questions.length - correctCount}', Colors.red),
                       ],
                     ),
                   ],
@@ -706,17 +747,18 @@ class SummaryScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            
+
             // Detailed results
             Expanded(
               child: ListView.separated(
                 itemCount: questions.length,
-                separatorBuilder: (context, index) => const SizedBox(height: 12),
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 12),
                 itemBuilder: (context, index) {
                   final question = questions[index];
                   final isCorrect = answers[index] == true;
                   final userAnswer = answers[index];
-                  
+
                   return Card(
                     elevation: 2,
                     shape: RoundedRectangleBorder(
@@ -724,7 +766,8 @@ class SummaryScreen extends StatelessWidget {
                     ),
                     child: ExpansionTile(
                       leading: CircleAvatar(
-                        backgroundColor: isCorrect ? Colors.green[50] : Colors.red[50],
+                        backgroundColor:
+                            isCorrect ? Colors.green[50] : Colors.red[50],
                         foregroundColor: isCorrect ? Colors.green : Colors.red,
                         child: Icon(isCorrect ? Icons.check : Icons.close),
                       ),
@@ -735,12 +778,12 @@ class SummaryScreen extends StatelessWidget {
                         ),
                       ),
                       subtitle: Text(
-                        userAnswer == null 
-                            ? 'Not answered' 
+                        userAnswer == null
+                            ? 'Not answered'
                             : (isCorrect ? 'Correct' : 'Incorrect'),
                         style: TextStyle(
-                          color: userAnswer == null 
-                              ? Colors.grey 
+                          color: userAnswer == null
+                              ? Colors.grey
                               : (isCorrect ? Colors.green : Colors.red),
                         ),
                       ),
@@ -809,7 +852,7 @@ class SummaryScreen extends StatelessWidget {
                 },
               ),
             ),
-            
+
             // Action buttons
             Padding(
               padding: const EdgeInsets.only(top: 16),
@@ -871,7 +914,8 @@ class SummaryScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildScoreCircle(BuildContext context, String title, String value, Color color) {
+  Widget _buildScoreCircle(
+      BuildContext context, String title, String value, Color color) {
     return Column(
       children: [
         Container(

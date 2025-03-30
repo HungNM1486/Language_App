@@ -9,122 +9,133 @@ class TestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final pix = (size.width / 375).clamp(0.8, 1.2);
+    final pix = (MediaQuery.of(context).size.width / 375).clamp(0.8, 1.2);
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: isDarkMode
-                ? [
-                    const Color(0xFF0F2027),
-                    const Color(0xFF203A43),
-                    const Color(0xFF2C5364)
-                  ]
-                : [
-                    const Color(0xFFE0F7FA),
-                    const Color(0xFFB2EBF2),
-                    const Color(0xFF80DEEA)
-                  ],
-          ),
-        ),
+      backgroundColor: isDarkMode ? const Color(0xFF121212) : Colors.white,
+      body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: MediaQuery.of(context).padding.top + 20 * pix),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24 * pix),
+            // Header với nền nhẹ
+            Container(
+              padding:
+                  EdgeInsets.fromLTRB(24 * pix, 32 * pix, 24 * pix, 16 * pix),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: isDarkMode
+                      ? [const Color(0xFF1E1E2F), const Color(0xFF121212)]
+                      : [const Color(0xFFF1F5F9), Colors.white],
+                ),
+              ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
-                      height: MediaQuery.of(context).padding.top + 20 * pix),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24 * pix),
-                    child: Center(
-                      // Sử dụng Center để căn giữa chữ
-                      child: Text(
-                        'Kiểm Tra',
-                        style: TextStyle(
-                          fontSize: 28 * pix,
-                          fontFamily: 'BeVietnamPro',
-                          fontWeight: FontWeight.w800,
-                          color: isDarkMode ? Colors.white : Colors.black87,
-                        ),
-                      ),
+                  Text(
+                    'Luyện Tập & Đánh Giá',
+                    style: TextStyle(
+                      fontSize: 28 * pix,
+                      fontFamily: 'BeVietnamPro',
+                      fontWeight: FontWeight.w700,
+                      color:
+                          isDarkMode ? Colors.white : const Color(0xFF1C2526),
+                      letterSpacing: 0.5,
                     ),
                   ),
-                  SizedBox(height: 32 * pix),
                 ],
               ),
             ),
-            SizedBox(height: 32 * pix),
+            // Nội dung chính
             Expanded(
-              child: ClipRRect(
-                borderRadius:
-                    BorderRadius.vertical(top: Radius.circular(40 * pix)),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: isDarkMode ? Colors.grey[900] : Colors.white,
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(40 * pix)),
-                  ),
-                  child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    padding: EdgeInsets.fromLTRB(
-                        24 * pix, 40 * pix, 24 * pix, 24 * pix),
-                    child: Column(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                padding: EdgeInsets.symmetric(
+                    horizontal: 24 * pix, vertical: 24 * pix),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
                       children: [
-                        _buildModernOption(
-                          context: context,
-                          icon: Icons.auto_awesome,
-                          title: "Câu Hỏi Thông Minh",
-                          subtitle: "Hệ thống câu hỏi AI tự điều chỉnh",
-                          color: const Color(0xFFFF6B6B),
-                          pix: pix,
-                          onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const QuestionsScreen()),
+                        Text(
+                          'Hành Trình Học Tập',
+                          style: TextStyle(
+                            fontSize: 18 * pix,
+                            fontFamily: 'BeVietnamPro',
+                            fontWeight: FontWeight.w600,
+                            color: isDarkMode
+                                ? Colors.white
+                                : const Color(0xFF1C2526),
                           ),
                         ),
-                        SizedBox(height: 24 * pix),
-                        _buildModernOption(
-                          context: context,
-                          icon: Icons.videogame_asset,
-                          title: "Trò Chơi Tương Tác",
-                          subtitle: "Học từ vựng qua trò chơi",
-                          color: const Color(0xFF4ECDC4),
-                          pix: pix,
-                          onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const VocabularyGameScreen()),
-                          ),
+                        SizedBox(width: 8 * pix),
+                        Container(
+                          height: 2 * pix,
+                          width: 40 * pix,
+                          color: isDarkMode
+                              ? Colors.grey[700]
+                              : const Color(0xFFE5E7EB),
                         ),
-                        SizedBox(height: 24 * pix),
-                        _buildModernOption(
-                          context: context,
-                          icon: Icons.analytics,
-                          title: "Đánh Giá Năng Lực",
-                          subtitle: "Bài test phân tích điểm mạnh/yếu",
-                          color: const Color(0xFFFFA3A3),
-                          pix: pix,
-                          onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ExamScreen()),
-                          ),
-                        ),
-                        SizedBox(height: 40 * pix),
                       ],
                     ),
-                  ),
+                    SizedBox(height: 8 * pix),
+                    Text(
+                      'Chọn một nhiệm vụ để nâng cao kỹ năng tiếng Anh',
+                      style: TextStyle(
+                        fontSize: 14 * pix,
+                        fontFamily: 'BeVietnamPro',
+                        color: isDarkMode ? Colors.grey[400] : Colors.grey[600],
+                      ),
+                    ),
+                    SizedBox(height: 24 * pix),
+                    _buildTaskCard(
+                      context: context,
+                      icon: Icons.quiz,
+                      title: 'Câu Đố Thích Ứng',
+                      subtitle: 'Câu hỏi cá nhân hóa để kiểm tra kiến thức',
+                      progress: 0.7,
+                      color: const Color(0xFF3B82F6), // Xanh dương
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const QuestionsScreen()),
+                      ),
+                      pix: pix,
+                    ),
+                    SizedBox(height: 16 * pix),
+                    _buildTaskCard(
+                      context: context,
+                      icon: Icons.extension,
+                      title: 'Luyện Từ Vựng',
+                      subtitle: 'Trò chơi tương tác để nắm vững từ mới',
+                      progress: 0.4,
+                      color: const Color(0xFF10B981), // Xanh lá
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const VocabularyGameScreen()),
+                      ),
+                      pix: pix,
+                    ),
+                    SizedBox(height: 16 * pix),
+                    _buildTaskCard(
+                      context: context,
+                      icon: Icons.analytics,
+                      title: 'Đánh Giá Kỹ Năng',
+                      subtitle: 'Bài kiểm tra toàn diện để đánh giá trình độ',
+                      progress: 0.2,
+                      color: const Color(0xFFD97706), // Cam
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ExamScreen()),
+                      ),
+                      pix: pix,
+                    ),
+                    SizedBox(height: 32 * pix),
+                  ],
                 ),
               ),
             ),
@@ -135,84 +146,99 @@ class TestScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildModernOption({
+  Widget _buildTaskCard({
     required BuildContext context,
     required IconData icon,
     required String title,
     required String subtitle,
+    required double progress,
     required Color color,
     required double pix,
     required VoidCallback onTap,
   }) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
-    return InkWell(
-      borderRadius: BorderRadius.circular(20 * pix),
+    return GestureDetector(
       onTap: onTap,
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeInOut,
         padding: EdgeInsets.all(20 * pix),
-        margin: EdgeInsets.symmetric(vertical: 8 * pix),
         decoration: BoxDecoration(
-          color: isDarkMode ? Colors.grey[850] : Colors.white,
-          borderRadius: BorderRadius.circular(20 * pix),
+          color: isDarkMode ? const Color(0xFF1E1E2F) : Colors.white,
+          borderRadius: BorderRadius.circular(16 * pix),
+          border: Border.all(
+            color: isDarkMode ? Colors.grey[800]! : const Color(0xFFE5E7EB),
+            width: 1,
+          ),
           boxShadow: [
             BoxShadow(
-              color: isDarkMode ? Colors.black : Colors.grey.withOpacity(0.2),
-              blurRadius: 10,
-              offset: const Offset(4, 4),
-            ),
-            BoxShadow(
-              color: isDarkMode ? Colors.grey[800]! : Colors.white,
-              blurRadius: 10,
-              offset: const Offset(-4, -4),
+              color: Colors.black.withOpacity(isDarkMode ? 0.3 : 0.05),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
             ),
           ],
         ),
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: 60 * pix,
-              height: 60 * pix,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [color.withOpacity(0.8), color],
+            Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(12 * pix),
+                  decoration: BoxDecoration(
+                    color: color.withOpacity(0.1),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    icon,
+                    size: 24 * pix,
+                    color: color,
+                  ),
                 ),
-              ),
-              child: Icon(icon, size: 28 * pix, color: Colors.white),
-            ),
-            SizedBox(width: 20 * pix),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 18 * pix,
-                      fontFamily: 'BeVietnamPro',
-                      fontWeight: FontWeight.w700,
-                      color: isDarkMode ? Colors.white : Colors.black87,
-                    ),
+                SizedBox(width: 16 * pix),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                          fontSize: 18 * pix,
+                          fontFamily: 'BeVietnamPro',
+                          fontWeight: FontWeight.w600,
+                          color: isDarkMode
+                              ? Colors.white
+                              : const Color(0xFF1C2526),
+                        ),
+                      ),
+                      SizedBox(height: 4 * pix),
+                      Text(
+                        subtitle,
+                        style: TextStyle(
+                          fontSize: 14 * pix,
+                          fontFamily: 'BeVietnamPro',
+                          color:
+                              isDarkMode ? Colors.grey[400] : Colors.grey[600],
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(height: 4 * pix),  
-                  Text(
-                    subtitle,
-                    style: TextStyle(
-                      fontSize: 14 * pix,
-                      fontFamily: 'BeVietnamPro',
-                      color: isDarkMode ? Colors.grey[400] : Colors.grey[600],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  size: 18 * pix,
+                  color: color,
+                ),
+              ],
             ),
-            Icon(
-              Icons.arrow_forward_ios,
-              size: 18 * pix,
-              color: isDarkMode ? Colors.grey[400] : Colors.grey[600],
+            SizedBox(height: 16 * pix),
+            LinearProgressIndicator(
+              value: progress,
+              backgroundColor:
+                  isDarkMode ? Colors.grey[700] : const Color(0xFFE5E7EB),
+              valueColor: AlwaysStoppedAnimation<Color>(color),
+              minHeight: 4 * pix,
             ),
           ],
         ),
