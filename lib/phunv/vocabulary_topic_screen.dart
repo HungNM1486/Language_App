@@ -162,10 +162,7 @@ class _VocabularyTopicscreenState extends State<VocabularyTopicscreen> {
               ],
             ),
           ),
-        ),
-        const Positioned(
-          bottom: 0,
-          child: Bottombar(type: 2),
+          bottomNavigationBar: const Bottombar(type: 2),
         ),
       ],
     );

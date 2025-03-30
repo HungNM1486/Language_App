@@ -363,11 +363,7 @@ class _HomescreenState extends State<Homescreen> {
               ],
             ),
           ),
-        ),
-        // Thanh Bottombar cố định ở dưới
-        const Positioned(
-          bottom: 0,
-          child: Bottombar(type: 1),
+          bottomNavigationBar: const Bottombar(type: 1),
         ),
       ],
     );

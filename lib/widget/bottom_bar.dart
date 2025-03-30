@@ -4,7 +4,8 @@ import 'package:language_app/phunv/home_screen.dart';
 import 'package:language_app/phunv/vocabulary_topic_screen.dart';
 import 'package:language_app/res/imagesLA/app_images.dart';
 import 'package:language_app/res/theme/app_colors.dart';
-import 'package:language_app/hungnm/profile.dart';
+import 'package:language_app/hungnm/profile/profile.dart';
+import 'package:language_app/hungnm/test/test_screen.dart';
 
 class Bottombar extends StatefulWidget {
   const Bottombar({super.key, required this.type});
@@ -73,7 +74,7 @@ class _BottombarState extends State<Bottombar> {
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const Loginscreen()),
+                MaterialPageRoute(builder: (context) => const TestScreen()),
               );
             },
             image: AppImages.icontest,
