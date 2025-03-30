@@ -14,39 +14,95 @@ class QuestionsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final pix = (size.width / 375).clamp(0.8, 1.2);
+    final pix = (MediaQuery.of(context).size.width / 375).clamp(0.8, 1.2);
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      body: Stack(
-        children: [
-          Column(
+      backgroundColor: isDarkMode ? const Color(0xFF121212) : Colors.white,
+      appBar: AppBar(
+        title: const Text('Câu Hỏi Trắc Nghiệm'),
+        backgroundColor:
+            isDarkMode ? const Color(0xFF1E1E2F) : const Color(0xFFF1F5F9),
+        foregroundColor: isDarkMode ? Colors.white : const Color(0xFF1C2526),
+        elevation: 0,
+      ),
+      body: SafeArea(
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: isDarkMode
+                  ? [const Color(0xFF1E1E2F), const Color(0xFF121212)]
+                  : [const Color(0xFFF1F5F9), Colors.white],
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const TopBar(title: 'Câu hỏi'),
+              // Nội dung chính
               Expanded(
                 child: SingleChildScrollView(
-                  padding: EdgeInsets.all(16 * pix),
+                  physics: const BouncingScrollPhysics(),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 24 * pix, vertical: 16 * pix),
                   child: Column(
-                    children: weeks.map((week) {
-                      return Padding(
-                        padding: EdgeInsets.only(bottom: 8 * pix),
-                        child: _buildWeekOption(
-                          context,
-                          week: week['week'],
-                          description: week['description'],
-                          score: week['score'],
-                          pix: pix,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Danh Sách Tuần',
+                            style: TextStyle(
+                              fontSize: 18 * pix,
+                              fontFamily: 'BeVietnamPro',
+                              fontWeight: FontWeight.w600,
+                              color: isDarkMode
+                                  ? Colors.white
+                                  : const Color(0xFF1C2526),
+                            ),
+                          ),
+                          SizedBox(width: 8 * pix),
+                          Container(
+                            height: 2 * pix,
+                            width: 40 * pix,
+                            color: isDarkMode
+                                ? Colors.grey[700]
+                                : const Color(0xFFE5E7EB),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 8 * pix),
+                      Text(
+                        'Chọn tuần để kiểm tra kiến thức của bạn',
+                        style: TextStyle(
+                          fontSize: 14 * pix,
+                          fontFamily: 'BeVietnamPro',
+                          color:
+                              isDarkMode ? Colors.grey[400] : Colors.grey[600],
                         ),
-                      );
-                    }).toList(),
+                      ),
+                      SizedBox(height: 24 * pix),
+                      ...weeks.map((week) {
+                        return Padding(
+                          padding: EdgeInsets.only(bottom: 8 * pix),
+                          child: _buildWeekOption(
+                            context,
+                            week: week['week'],
+                            description: week['description'],
+                            score: week['score'],
+                            pix: pix,
+                          ),
+                        );
+                      }).toList(),
+                    ],
                   ),
                 ),
               ),
             ],
           ),
-        ],
+        ),
       ),
-      bottomNavigationBar: const Bottombar(type: 4),
     );
   }
 
@@ -95,7 +151,6 @@ class QuestionsScreen extends StatelessWidget {
         ),
         child: Row(
           children: [
-            // Icon
             Container(
               padding: EdgeInsets.all(10 * pix),
               decoration: BoxDecoration(
@@ -109,7 +164,6 @@ class QuestionsScreen extends StatelessWidget {
               ),
             ),
             SizedBox(width: 16 * pix),
-            // Nội dung chính
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,7 +189,6 @@ class QuestionsScreen extends StatelessWidget {
                 ],
               ),
             ),
-            // Điểm hoặc trạng thái
             Container(
               padding:
                   EdgeInsets.symmetric(horizontal: 12 * pix, vertical: 6 * pix),
@@ -365,24 +418,102 @@ class _QuizScreenState extends State<QuizScreen> {
     if (answers.any((answer) => answer != null)) {
       final shouldExit = await showDialog<bool>(
         context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('Exit Quiz?'),
-          content:
-              const Text('Your progress will not be saved if you exit now.'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context, false),
-              child: const Text('Cancel'),
+        barrierDismissible: false,
+        builder: (context) {
+          final pix = (MediaQuery.of(context).size.width / 375).clamp(0.8, 1.2);
+          final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
+          return Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16 * pix),
             ),
-            TextButton(
-              onPressed: () => Navigator.pop(context, true),
-              child: const Text('Exit'),
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.red,
+            backgroundColor:
+                isDarkMode ? const Color(0xFF1E1E2F) : Colors.white,
+            child: Padding(
+              padding: EdgeInsets.all(20 * pix),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.warning_rounded,
+                    size: 40 * pix,
+                    color: const Color(0xFFFFA726),
+                  ),
+                  SizedBox(height: 16 * pix),
+                  Text(
+                    'Thoát bài kiểm tra?',
+                    style: TextStyle(
+                      fontSize: 20 * pix,
+                      fontFamily: 'BeVietnamPro',
+                      fontWeight: FontWeight.w600,
+                      color:
+                          isDarkMode ? Colors.white : const Color(0xFF1C2526),
+                    ),
+                  ),
+                  SizedBox(height: 8 * pix),
+                  Text(
+                    'Tiến trình của bạn sẽ không được lưu nếu bạn thoát bây giờ',
+                    style: TextStyle(
+                        fontSize: 16 * pix,
+                        fontFamily: 'BeVietnamPro',
+                        color:
+                            isDarkMode ? Colors.grey[400] : Colors.grey[600]),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 24 * pix),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: OutlinedButton(
+                          onPressed: () => Navigator.pop(context, false),
+                          style: OutlinedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(vertical: 12 * pix),
+                            side: BorderSide(
+                                color: isDarkMode
+                                    ? Colors.grey[600]!
+                                    : const Color(0xFFE5E7EB)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12 * pix)),
+                          ),
+                          child: Text(
+                            'Tiếp tục làm',
+                            style: TextStyle(
+                                fontSize: 16 * pix,
+                                fontFamily: 'BeVietnamPro',
+                                color: isDarkMode
+                                    ? Colors.white
+                                    : const Color(0xFF1C2526)),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 16 * pix),
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () => Navigator.pop(context, true),
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(vertical: 12 * pix),
+                            backgroundColor: const Color(0xFFEF4444),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12 * pix)),
+                            elevation: 0,
+                          ),
+                          child: Text(
+                            'Thoát',
+                            style: TextStyle(
+                                fontSize: 16 * pix,
+                                fontFamily: 'BeVietnamPro',
+                                color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          );
+        },
       );
       return shouldExit ?? false;
     }

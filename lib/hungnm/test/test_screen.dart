@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:language_app/widget/bottom_bar.dart';
-import 'package:language_app/hungnm/test/questions_screen.dart';
+import 'package:language_app/hungnm/test/question_game/questions_screen.dart';
 import 'package:language_app/hungnm/test/vocab_game/vocabulary_game_screen.dart';
-import 'package:language_app/hungnm/test/exam_screen.dart';
+import 'package:language_app/hungnm/test/exam/exam_screen.dart';
 
 class TestScreen extends StatelessWidget {
   const TestScreen({super.key});
