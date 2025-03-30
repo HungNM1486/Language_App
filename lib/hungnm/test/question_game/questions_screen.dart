@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:language_app/widget/top_bar.dart';
-import 'package:language_app/widget/bottom_bar.dart';
 
 // Dữ liệu mẫu
 final List<Map<String, dynamic>> weeks = [
