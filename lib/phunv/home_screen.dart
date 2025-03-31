@@ -145,13 +145,13 @@ class _HomescreenState extends State<Homescreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _buildStatItem('Số ngày học', '456', pix),
+                      _buildStatItem('Ngày học', '456', pix),
                       Container(
                           height: 55 * pix,
                           width: 0.5 * pix,
                           margin: EdgeInsets.all(10 * pix),
                           color: const Color(0xff165598)),
-                      _buildStatItem('Số khóa học', '321', pix),
+                      _buildStatItem('Bài kiểm tra', '2/10', pix),
                       Container(
                           height: 55 * pix,
                           width: 0.5 * pix,
