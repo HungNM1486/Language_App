@@ -73,12 +73,19 @@ class _ListeningScreenState extends State<ListeningScreen> {
 
   void _submitSection() {
     if (currentQuestion == questions.length - 1) {
+      final listeningResults = {
+        'correct': answers.where((answer) => answer == true).length,
+        'total': questions.length,
+        'timeTaken': widget.timeLeft - timeLeft, // Thời gian đã dùng
+      };
       Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => SpeakingScreen(
             examName: widget.examName,
             timeLeft: timeLeft,
+            listeningResults:
+                listeningResults, // Truyền dữ liệu sang SpeakingScreen
           ),
         ),
       );

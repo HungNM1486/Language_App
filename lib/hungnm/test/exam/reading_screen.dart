@@ -5,8 +5,15 @@ import 'writing_screen.dart';
 class ReadingScreen extends StatefulWidget {
   final String examName;
   final int timeLeft;
-  const ReadingScreen(
-      {super.key, required this.examName, required this.timeLeft});
+  final Map<String, dynamic> listeningResults;
+  final Map<String, dynamic> speakingResults;
+  const ReadingScreen({
+    super.key,
+    required this.examName,
+    required this.timeLeft,
+    required this.listeningResults,
+    required this.speakingResults,
+  });
 
   @override
   State<ReadingScreen> createState() => _ReadingScreenState();
@@ -14,6 +21,8 @@ class ReadingScreen extends StatefulWidget {
 
 class _ReadingScreenState extends State<ReadingScreen> {
   late int timeLeft;
+  late int initialTime; // Thêm biến này
+
   int currentPassage = 0;
   List<Map<String, dynamic>> answers =
       List.generate(6, (_) => {'type': '', 'value': null}); // Lưu câu trả lời
@@ -95,6 +104,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
   void initState() {
     super.initState();
     timeLeft = widget.timeLeft;
+    initialTime = widget.timeLeft; // Lưu thời gian ban đầu
     _startTimer();
   }
 
@@ -117,12 +127,26 @@ class _ReadingScreenState extends State<ReadingScreen> {
 
   void _submitSection() {
     if (currentPassage == passages.length - 1) {
+      final readingResults = {
+        'correct': answers.where((answer) {
+          final passageIndex = answers.indexOf(answer) ~/ 3;
+          final questionIndex = answers.indexOf(answer) % 3;
+          final correctAnswer =
+              passages[passageIndex]['questions'][questionIndex]['correct'];
+          return answer['value'] == correctAnswer;
+        }).length,
+        'total': answers.length,
+        'timeTaken': widget.timeLeft - timeLeft, // Thời gian đã dùng
+      };
       Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => WritingScreen(
             examName: widget.examName,
             timeLeft: timeLeft,
+            listeningResults: widget.listeningResults, // Từ ListeningScreen
+            speakingResults: widget.speakingResults, // Từ SpeakingScreen
+            readingResults: readingResults, // Kết quả ReadingScreen
           ),
         ),
       );

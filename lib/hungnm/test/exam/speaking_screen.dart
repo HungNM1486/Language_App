@@ -6,15 +6,21 @@ import 'reading_screen.dart';
 class SpeakingScreen extends StatefulWidget {
   final String examName;
   final int timeLeft;
-  const SpeakingScreen(
-      {super.key, required this.examName, required this.timeLeft});
-
+  final Map<String, dynamic> listeningResults;
+  const SpeakingScreen({
+    super.key,
+    required this.examName,
+    required this.timeLeft,
+    required this.listeningResults,
+  });
   @override
   State<SpeakingScreen> createState() => _SpeakingScreenState();
 }
 
 class _SpeakingScreenState extends State<SpeakingScreen> {
   late int timeLeft;
+  late int initialTime;
+
   int currentWord = 0;
   List<bool?> answers =
       List.filled(3, null); // null: chưa ghi, true: đúng, false: sai
@@ -31,6 +37,7 @@ class _SpeakingScreenState extends State<SpeakingScreen> {
   void initState() {
     super.initState();
     timeLeft = widget.timeLeft;
+    initialTime = widget.timeLeft; // Lưu thời gian ban đầu
     _startTimer();
   }
 
@@ -62,7 +69,7 @@ class _SpeakingScreenState extends State<SpeakingScreen> {
     print('Bắt đầu ghi âm từ: ${words[currentWord]}');
     HapticFeedback.mediumImpact(); // Rung khi bắt đầu
 
-    recordingTimer = Timer(const Duration(seconds: 5), () {
+    recordingTimer = Timer(const Duration(seconds: 1), () {
       if (mounted) {
         _stopRecording();
       }
@@ -202,12 +209,20 @@ class _SpeakingScreenState extends State<SpeakingScreen> {
 
   void _submitSection() {
     if (currentWord == words.length - 1) {
+      final speakingResults = {
+        'correct': answers.where((answer) => answer == true).length,
+        'total': words.length,
+        'timeTaken': widget.timeLeft - timeLeft, // Thời gian đã dùng
+      };
       Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => ReadingScreen(
             examName: widget.examName,
             timeLeft: timeLeft,
+            listeningResults:
+                widget.listeningResults, // Truyền từ ListeningScreen
+            speakingResults: speakingResults, // Kết quả SpeakingScreen
           ),
         ),
       );
