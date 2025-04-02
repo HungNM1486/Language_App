@@ -4,7 +4,7 @@ import 'package:language_app/phunv/widget/topic_widget.dart'; // Widget hiển t
 import 'package:language_app/models/topic_model.dart'; // Model dữ liệu chủ đề
 import 'package:language_app/res/imagesLA/app_images.dart'; // Danh sách ảnh
 import 'package:language_app/widget/bottom_bar.dart'; // Thanh điều hướng dưới
-import 'package:language_app/hungnm/community/community_screen.dart';
+import 'package:language_app/hungnm/community/community_forum_page.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -342,7 +342,7 @@ class _HomescreenState extends State<Homescreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const CommunityScreen()),
+                                builder: (context) => const CommunityForumPage()),
                           );
                         },
                         child: Container(
